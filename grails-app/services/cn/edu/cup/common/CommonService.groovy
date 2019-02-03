@@ -11,6 +11,41 @@ class CommonService {
     def grailsApplication
     def webRootPath = ""        // 公用的变量
 
+    /*
+     * 从json字符串中导入对象列表
+     * */
+
+    def importFromJson(String jsonString, Class clazz) {
+        def jsonList = com.alibaba.fastjson.JSON.parse(jsonString)
+        def objectList = []
+        jsonList.each { e ->
+            def nq = clazz.newInstance()
+            e.each { item ->
+                nq.properties.put(item.key, item.value)
+            }
+            objectList.add(nq)
+        }
+        return objectList
+    }
+
+    /*
+    * 将对象列表导出到json字符串中
+    * */
+
+    def exportObjects2JsonString(ObjectList) {
+        def tempList = []
+        ObjectList.each { e ->
+            def q = [:]
+            e.properties.each { ee ->
+                q.put(ee.key, ee.value)
+            }
+            tempList.add(q)
+        }
+
+        def fjson = com.alibaba.fastjson.JSON.toJSONString(tempList)
+        return fjson
+    }
+
     def applicationName() {
         println("${grailsApplication}")
         return grailsApplication.metadata.getApplicationName()

@@ -12,6 +12,11 @@ import grails.gorm.transactions.Transactional
 class SystemCommonService {
 
     def systemUserService
+    def grailsApplication
+
+    def rootURI() {
+        return
+    }
 
     def getRealName(SystemUser systemUser) {
         def user = Person.findByCode(systemUser.userName)

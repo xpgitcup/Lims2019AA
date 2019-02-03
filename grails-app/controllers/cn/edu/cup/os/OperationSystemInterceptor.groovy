@@ -8,7 +8,7 @@ class OperationSystemInterceptor {
         def m = matchAll().excludes(controller: "home")
         m.excludes(controller: "systemLog")
         //m.excludes(controller: "operation4SystemLog")
-        def rootURI = "Lims2018C"
+        def rootURI = "Lims2019AA"
         m.excludes(uri: "/${rootURI}/")  //这一句是关键。发布后显示主页的关键
         m.excludes(uri: "/")            //开发期间显示主页
     }
@@ -28,7 +28,7 @@ class OperationSystemInterceptor {
     boolean after() {
         println("控制器：${controllerName}，动作：${actionName}.之后...")
         if (session.systemUser) {
-            if (params.size()>0) {
+            if (params.size() > 0) {
                 println("记录日志...")
                 systemCommonService.recordLog(session, request, params)
             }
