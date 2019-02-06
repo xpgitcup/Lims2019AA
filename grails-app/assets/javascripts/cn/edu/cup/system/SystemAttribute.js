@@ -1,12 +1,12 @@
-var operationSystemAttributeDiv;
+var operation4SystemAttributeDiv;
 var title4SystemAttribute = ["系统属性维护"]
 
 $(function () {
     console.info("系统属性操作...");
 
-    operationSystemAttributeDiv = $("#operationSystemAttributeDiv");
+    operation4SystemAttributeDiv = $("#operation4SystemAttributeDiv");
     var settings = {
-        divId: operationSystemAttributeDiv,
+        divId: operation4SystemAttributeDiv,
         titles: title4SystemAttribute,
         loadFunction: loadSystemAttribute,
         countFunction: countSystemAttribute

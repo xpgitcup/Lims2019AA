@@ -15,11 +15,42 @@ var defaultPageSize = 10
 function configDisplayUI(settings) {
     var theDiv = settings.divId;
     var titles = settings.titles;
+    var loadName = settings.loadFunction;
+    var countName = settings.countFunction;
+    var loadFunction = eval(loadName);
+    var countFunction = eval(countName);
 
-    // 添加显示元件
+    var panelDiv;
+    var paginationDiv;
+    var title;
+
     if (titles.length < 2) {
+        title = titles[0];
+        // 添加显示元件
+        panelDiv = addNewPanelDiv(title, theDiv);
+        paginationDiv = addNewPaginationDiv(title, theDiv);
+        // 设置参数
+        panelDiv.panel({
+            href: loadFunction()
+        })
+    } else {
+        // 添加显示元件
+        for (var i in titles) {
+            title = titles[i];
 
+            theDiv.tabs('add', {
+                title: title,
+                closable: false
+            })
+
+            //插入到tab中
+            tabsDiv.tabs('select', x)
+            var tab = tabsDiv.tabs('getSelected');
+            var listDiv = addNewNormalDiv(title, tab);
+            var paginationDiv = addNewPaginationDiv(title, tab);
+        }
     }
+
 
     /*
     * 私有函数
