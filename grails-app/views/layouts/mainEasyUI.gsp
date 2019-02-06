@@ -63,7 +63,7 @@
 
     <!--用户自定义的-->
     <asset:javascript src="cn/edu/cup/common/common.js"/>
-    <asset:javascript src="cn/edu/cup/common/commonUI.js"/>
+    <asset:javascript src="cn/edu/cup/common/commonUI20190206.js"/>
 
     <!-- 用于与session交换数据的代码  -->
     <g:javascript>

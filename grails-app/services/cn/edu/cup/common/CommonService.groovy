@@ -4,8 +4,6 @@ import grails.util.Environment
 import org.grails.web.util.WebUtils
 import org.springframework.web.context.request.RequestContextHolder
 
-import javax.servlet.ServletContext
-
 class CommonService {
 
     def grailsApplication
@@ -26,6 +24,40 @@ class CommonService {
             objectList.add(nq)
         }
         return objectList
+    }
+
+    /*
+     * 从json字符串中导入对象列表
+     * */
+
+    def importFromJson4Tree(String jsonString, Class clazz, String subItemsString) {
+        def jsonList = com.alibaba.fastjson.JSON.parse(jsonString)
+        def objectList = []
+        jsonList.each { e ->
+            //导入一个元素
+            def newItem = clazz.newInstance()
+            importItem4Tree(newItem, e, subItemsString)
+            objectList.add(newItem)
+            //子元素的导入
+            def items = e.getAt(subItemsString)
+            def subList = []
+            items.each { se->
+                def newSubItem = clazz.newInstance()
+                importItem4Tree(newSubItem, se, subItemsString)
+                subList.add(newSubItem)
+            }
+            //更新子元素
+            newItem.properties.put(subItemsString, subList)
+        }
+        return objectList
+    }
+
+    private void importItem4Tree(newItem, e, subItemsString) {
+        e.each { item ->
+            if (item.key != subItemsString) {
+                newItem.properties.put(item.key, item.value)
+            }
+        }
     }
 
     /*

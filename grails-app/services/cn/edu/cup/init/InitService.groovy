@@ -128,6 +128,12 @@ class InitService {
         def jsonFile = new File(fileName)
         if (jsonFile.exists()) {
             def json = jsonFile.text
+            def menus = commonService.importFromJson4Tree(json, SystemMenu.class, "menuItems")
+            println("导入：${menus}")
+            menus.each { e ->
+                systemMenuService.save(e)
+            }
+            /*
             def menuItems = com.alibaba.fastjson.JSON.parse(json)
             println(menuItems)
             menuItems.each { e ->
@@ -154,6 +160,7 @@ class InitService {
                     }
                 }
             }
+            */
         }
     }
 
