@@ -1,6 +1,7 @@
 package cn.edu.cup.os
 
 import cn.edu.cup.system.SystemAttribute
+import grails.converters.JSON
 import grails.validation.ValidationException
 
 import static org.springframework.http.HttpStatus.CREATED
@@ -11,6 +12,18 @@ import static org.springframework.http.HttpStatus.OK
 class Operation4SystemAttributeController {
 
     def systemAttributeService
+    def commonQueryService
+
+    def count() {
+        def (Object count, String message) = commonQueryService.countFunction(params)
+        flash.message = message
+        def result = [count: count]
+        if (request.xhr) {
+            render result as JSON
+        } else {
+            result
+        }
+    }
 
     def show(Long id) {
         respond systemAttributeService.get(id)
