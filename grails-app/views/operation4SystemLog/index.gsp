@@ -46,10 +46,7 @@
                     </ul>
                 </div>
 
-                <div class="easyui-panel">
-                    <div id="listSystemLogDiv" class="easyui-tree"></div>
-
-                    <div id="paginationSystemLogDiv" class="easyui-pagination"></div>
+                <div class="easyui-panel" id="operation4SystemLogDiv">
                 </div>
             </div>
         </div>

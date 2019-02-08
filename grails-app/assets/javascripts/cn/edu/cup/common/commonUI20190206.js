@@ -23,15 +23,37 @@ function configDisplayUI(settings) {
     var panelDiv;
     var paginationDiv;
     var title;
+    var localPageSize;
+
+    //处理页面长度
+    if (settings.pageSize) {
+        localPageSize = settings.pageSize;
+    } else {
+        localPageSize = defaultPageSize;
+    }
 
     if (titles.length < 2) {
         title = titles[0];
         // 添加显示元件
         panelDiv = addNewPanelDiv(title, theDiv);
         paginationDiv = addNewPaginationDiv(title, theDiv);
+        var currentPage = readCookie("currentPage" + title, 1);
         // 设置参数
+        console.info("开始设置参数......")
+        var total = countFunction(title)
+        paginationDiv.pagination({
+            pageSize: localPageSize,
+            total: total,
+            pageList: [1, 3, 5, 10, 20, 30],
+            pageNumber: currentPage,
+            onSelectPage: function (pageNumber, pageSize) {
+                console.info("setupPaginationParams4TabPage: " + title)
+                $.cookie("currentPage" + title, pageNumber);     //记录当前页面
+                loadFunction(title, pageNumber, pageSize);
+            }
+        })
         panelDiv.panel({
-            href: loadFunction()
+            href: loadFunction(title, currentPage, localPageSize)
         })
     } else {
         // 添加显示元件
