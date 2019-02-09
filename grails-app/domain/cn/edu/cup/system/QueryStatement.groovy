@@ -7,7 +7,6 @@ class QueryStatement {
     boolean isSQL = false
     String viewName
     String paramsList
-    String discription
     Integer refCount = 0
 
     static constraints = {
@@ -16,7 +15,6 @@ class QueryStatement {
         isSQL(nullable: true)
         viewName(nullable: true)
         paramsList(nullable: true)
-        discription(nullable: true)
         refCount()
     }
 

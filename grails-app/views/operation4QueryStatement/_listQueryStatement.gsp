@@ -26,20 +26,27 @@
     </g:if>
 <!--f:table collection="${objectList}"/-->
     <table>
+        <thead>
+        <th>关键字</th>
+        <th>HQL</th>
+        <th>属性</th>
+        <th>视图</th>
+        <th>参数</th>
+        <th>计数</th>
+        </thead>
         <tbody>
         <g:each in="${objectList}" var="item" status="i">
             <tr class="${(i % 2 == 0) ? 'even' : 'odd'}">
-                <td>${item.id}.说明：${item.discription}</td>
-                <td>属性：${item.isSQL}</td>
-                <td>视图：${item.viewName}</td>
-                <td>参数：${item.paramsList}</td>
-            </tr>
-            <tr class="${(i % 2 == 0) ? 'even' : 'odd'}">
                 <td>
-                    关键字：${item.keyString}
+                    ${item.keyString}
                     <a href="operation4QueryStatement/edit/${item.id}">编辑</a>
+                    <a href="operation4QueryStatement/delete/${item.id}">删除</a>
                 </td>
-                <td colspan="4">${item.hql}</td>
+                <td>${item.hql}</td>
+                <td>${item.isSQL}</td>
+                <td>${item.viewName}</td>
+                <td>${item.paramsList}</td>
+                <td>${item.refCount}</td>
             </tr>
         </g:each>
         </tbody>

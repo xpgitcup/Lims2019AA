@@ -133,34 +133,6 @@ class InitService {
             menus.each { e ->
                 systemMenuService.save(e)
             }
-            /*
-            def menuItems = com.alibaba.fastjson.JSON.parse(json)
-            println(menuItems)
-            menuItems.each { e ->
-                def m0 = new SystemMenu(
-                        menuContext: e.menuContext,
-                        menuAction: e.menuAction,
-                        menuDescription: e.menuDescription,
-                        upMenuItem: null,
-                        roleAttribute: e.roleAttribute,
-                        menuOrder: e.menuOrder
-                )
-                systemMenuService.save(m0)
-                if (e.menuItems) {
-                    e.menuItems.each { ee ->
-                        def mm0 = new SystemMenu(
-                                menuContext: ee.menuContext,
-                                menuAction: ee.menuAction,
-                                menuDescription: ee.menuDescription,
-                                upMenuItem: m0,
-                                roleAttribute: ee.roleAttribute,
-                                menuOrder: ee.menuOrder
-                        )
-                        systemMenuService.save(mm0)
-                    }
-                }
-            }
-            */
         }
     }
 

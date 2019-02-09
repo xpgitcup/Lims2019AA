@@ -43,10 +43,6 @@
             <!--f:all bean="queryStatement"/-->
             <table>
             <tr>
-                <td>注释</td>
-                <td><g:textField name="discription" value="${queryStatement.discription}" style="width: 80em"></g:textField></td>
-            </tr>
-            <tr>
                 <td>关键字</td>
                 <td><g:textField name="keyString" value="${queryStatement.keyString}" style="width: 50em"></g:textField></td>
             </tr>

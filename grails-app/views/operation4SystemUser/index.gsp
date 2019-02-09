@@ -31,7 +31,7 @@
 <body>
 <div class="container">
     <div class="row-fluid">
-        <div class="col-md-4 column">
+        <div class="col-md-6 column">
             <div class="panel panel-default">
                 <div class="nav">
                     <ul>
@@ -43,15 +43,12 @@
                     </ul>
                 </div>
 
-                <div class="easyui-panel">
-                    <div id="listSystemUserDiv" class="easyui-tree"></div>
-
-                    <div id="paginationSystemUserDiv" class="easyui-pagination"></div>
+                <div id="operation4SystemUserDiv" class="easyui-panel">
                 </div>
             </div>
         </div>
 
-        <div class="col-md-8 column">
+        <div class="col-md-6 column">
             <div class="panel panel-default">
                 <div class="nav" role="navigation">
                     <ul>

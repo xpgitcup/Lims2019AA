@@ -7,16 +7,22 @@ class Operation4SystemLogController extends SystemLogController{
 
     def commonQueryService
 
-    def count() {
-        def (count, message) = commonQueryService.countFunction(params)
-        println("统计结果：${count}")
-        flash.message = message
-        if (count) {
-            if (count[0] < 0) {
-                flash.message = "功能尚未实现....."
-                count = 0
-            }
+    def list() {
+        println("${params}")
+        def result = commonQueryService.listFunction(params)
+        def view = result.view
+        flash.message = result.message
+        if (request.xhr) {
+            render(template: view, model: [objectList: result.objectList, flash: flash])
+        } else {
+            respond result.objectList
         }
+    }
+
+    def count() {
+        println("统计${params}")
+        def count = commonQueryService.countFunction(params)
+        println("统计结果：${count}")
         def result = [count: count]
         if (request.xhr) {
             render result as JSON

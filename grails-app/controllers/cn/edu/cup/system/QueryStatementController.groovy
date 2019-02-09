@@ -1,5 +1,6 @@
-package cn.edu.cup.lims
+package cn.edu.cup.system
 
+import cn.edu.cup.lims.QueryStatementService
 import cn.edu.cup.system.QueryStatement
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*

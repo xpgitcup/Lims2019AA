@@ -1,7 +1,7 @@
 package cn.edu.cup.os
 
 import cn.edu.cup.system.QueryStatement
-import cn.edu.cup.lims.QueryStatementController
+import cn.edu.cup.system.QueryStatementController
 import grails.converters.JSON
 import grails.validation.ValidationException
 
@@ -9,6 +9,8 @@ class Operation4QueryStatementController extends QueryStatementController {
 
     def commonQueryService
     def commonService
+
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def update(QueryStatement queryStatement) {
         if (queryStatement == null) {
@@ -26,21 +28,18 @@ class Operation4QueryStatementController extends QueryStatementController {
     }
 
     def importFromJsonFile() {
+        // 先清空
+        QueryStatement.list().each { e ->
+            queryStatementService.delete(e.id)
+        }
+        //再导入
         def fileName = commonService.queryStatementConfigFileName()
         def jsonFile = new File(fileName)
         if (jsonFile.exists()) {
             def json = jsonFile.text
-            def queryList = com.alibaba.fastjson.JSON.parse(json)
-            queryList.each { e ->
-                println("导入${e}")
-                def nq = QueryStatement.findByKeyString(e.keyString)
-                if (!nq) {
-                    nq = new QueryStatement()
-                }
-                e.each { item ->
-                    nq.properties.put(item.key, item.value)
-                }
-                queryStatementService.save(nq)
+            def querys = commonService.importFromJson(json, QueryStatement.class)
+            querys.each { e ->
+                queryStatementService.save(e)
             }
         }
         flash.message = "导入成功!"
@@ -52,16 +51,7 @@ class Operation4QueryStatementController extends QueryStatementController {
         def fileName = commonService.queryStatementConfigFileName()
         println("${fileName}")
 
-        def queryStatementList = []
-        QueryStatement.list().each { e ->
-            def q = [:]
-            e.properties.each { ee ->
-                q.put(ee.key, ee.value)
-            }
-            queryStatementList.add(q)
-        }
-
-        def fjson = com.alibaba.fastjson.JSON.toJSONString(queryStatementList)
+        def fjson = commonService.exportObjects2JsonString(QueryStatement.list())
         println("FastJson:")
         println(fjson)
 
@@ -76,7 +66,6 @@ class Operation4QueryStatementController extends QueryStatementController {
 
     def list() {
         println("${params}")
-        //def (String view, List objectList, String message) = commonQueryService.listFunction(params)
         def result = commonQueryService.listFunction(params)
         def view = result.view
         flash.message = result.message
@@ -88,12 +77,11 @@ class Operation4QueryStatementController extends QueryStatementController {
     }
 
     def count() {
-        def result = commonQueryService.countFunction(params)
-        println("统计结果：${result.count}")
-        flash.message = "请完善count."
-        def cresult = [count: result.count]
+        def count = commonQueryService.countFunction(params)
+        println("统计结果：${count}")
+        def result = [count: count]
         if (request.xhr) {
-            render cresult as JSON
+            render result as JSON
         } else {
             result
         }

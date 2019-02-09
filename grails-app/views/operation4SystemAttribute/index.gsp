@@ -30,7 +30,7 @@
 
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="nav">
                     <ul>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="nav" role="navigation">
                     <ul>

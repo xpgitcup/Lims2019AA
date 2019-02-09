@@ -52,14 +52,13 @@ class CommonQueryService {
 
     Object countFunction(params) {
         def keyString = generateKeyString(params)
-        def result = [:]
-        result.count = -1
-        result.message = "请完善count查询!"
-        def queryStatement = QueryStatement.findByKeyString(keyString)
+        def count = -1
         def pl = []
+        //查询SQL语句
+        def queryStatement = QueryStatement.findByKeyString(keyString)
         if (queryStatement) {
             println("统计语句； ${queryStatement.hql}")
-            if (queryStatement.hql!='') {
+            if (queryStatement.hql) {
                 if (queryStatement.paramsList) {
                     pl.addAll(queryStatement.paramsList.split(","))
                 }
@@ -78,19 +77,16 @@ class CommonQueryService {
                 } else {
                     count = QueryStatement.executeQuery(queryStatement.hql, ps)
                 }
-            } else {
-                message = "请完善count查询."
             }
         } else {
             def nq = new QueryStatement(keyString: keyString);
             queryStatementService.save(nq)
-            count = -1
         }
-        result
+        return count
     }
 
     private def generateKeyString(params) {
-        println("内部：${params}")
+        //println("内部：${params}")
         def keyString = ""
         def exclude = ["offset", "max", "id", "format"]
         def include = ["controller", "action", "key"]
@@ -111,7 +107,7 @@ class CommonQueryService {
                 }
             }
         }
-        println("Query ${keyString}")
+        //println("Query ${keyString}")
         keyString
     }
 

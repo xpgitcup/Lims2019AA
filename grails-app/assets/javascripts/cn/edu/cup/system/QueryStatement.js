@@ -11,6 +11,7 @@ $(function () {
         divId: operation4QueryStatementDiv,
         titles: title4QueryStatement,
         pageSize: localPageSizeQueryStatement,
+        pageList: [1,3,5,10],
         loadFunction: loadQueryStatement,
         countFunction: countQueryStatement
     }

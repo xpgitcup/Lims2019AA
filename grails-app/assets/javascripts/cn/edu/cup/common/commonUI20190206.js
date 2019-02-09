@@ -19,6 +19,9 @@ function configDisplayUI(settings) {
     var countName = settings.countFunction;
     var loadFunction = eval(loadName);
     var countFunction = eval(countName);
+    var paginationMessage = settings.paginationMessage;
+    var pageList = settings.pageList;
+    //var showPageList = settings.
 
     var panelDiv;
     var paginationDiv;
@@ -44,8 +47,10 @@ function configDisplayUI(settings) {
         paginationDiv.pagination({
             pageSize: localPageSize,
             total: total,
-            pageList: [1, 3, 5, 10, 20, 30],
+            pageList: pageList, //[1, 3, 5, 10, 20, 30],
+            showPageList: settings.showPageList,
             pageNumber: currentPage,
+            displayMsg: paginationMessage,
             onSelectPage: function (pageNumber, pageSize) {
                 console.info("setupPaginationParams4TabPage: " + title)
                 $.cookie("currentPage" + title, pageNumber);     //记录当前页面
