@@ -15,13 +15,13 @@ var defaultPageSize = 10
 function configDisplayUI(settings) {
     var theDiv = settings.divId;
     var titles = settings.titles;
-    var loadName = settings.loadFunction;
-    var countName = settings.countFunction;
-    var loadFunction = eval(loadName);
-    var countFunction = eval(countName);
+
+    var loadFunction = eval(settings.loadFunction);
+    var countFunction = eval(settings.countFunction);
+    var treeNodeDoSomeThing = eval(settings.treeNodeDoSomeThing)
+
     var paginationMessage = settings.paginationMessage;
     var pageList = settings.pageList;
-    //var showPageList = settings.
 
     var panelDiv;
     var paginationDiv;
@@ -78,6 +78,10 @@ function configDisplayUI(settings) {
             if (settings.isTreeView[0]) {
                 treeViewUl.tree({
                     url: settings.treeData[0],
+                    onSelect: function (node) {
+                        console.info("树形结构节点选择：" + node)
+                        treeNodeDoSomeThing(node)
+                    },
                     onLoadSuccess: function () {
                         treeViewUl.tree("collapseAll");
                     }

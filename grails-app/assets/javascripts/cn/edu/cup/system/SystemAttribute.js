@@ -14,6 +14,7 @@ $(function () {
         // 有关树形结构的设置
         isTreeView: isTreeView4SystemAttribute,
         treeData: treeData4SystemAttribute,
+        treeNodeDoSomeThing: systemAttributeNodeSelect,
         //paginationMessage: "",
         pageList: [],
         showPageList: false,
@@ -23,6 +24,15 @@ $(function () {
 
     configDisplayUI(settings);
 });
+
+function systemAttributeNodeSelect(node) {
+    console.info(jsTitle + "+节点选择......" + node);
+    showSystemAttribute(node);
+    $("#createSystemAttribute").attr('href', 'javascript: createSystemAttribute(' + node.attributes[0] + ')');
+    console.info(node);
+    console.info("当前节点：" + node.target.id);
+    $.cookie("currentSystemAttribute", node.target.id);
+}
 
 /*
 * 统计函数
