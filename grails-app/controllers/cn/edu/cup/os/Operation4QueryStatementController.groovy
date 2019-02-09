@@ -1,6 +1,6 @@
-package cn.edu.cup.os4lims
+package cn.edu.cup.os
 
-import cn.edu.cup.lims.QueryStatement
+import cn.edu.cup.system.QueryStatement
 import cn.edu.cup.lims.QueryStatementController
 import grails.converters.JSON
 import grails.validation.ValidationException
@@ -76,28 +76,24 @@ class Operation4QueryStatementController extends QueryStatementController {
 
     def list() {
         println("${params}")
-        def (String view, List objectList, String message) = commonQueryService.listFunction(params)
-        flash.message = message
+        //def (String view, List objectList, String message) = commonQueryService.listFunction(params)
+        def result = commonQueryService.listFunction(params)
+        def view = result.view
+        flash.message = result.message
         if (request.xhr) {
-            render(template: view, model: [objectList: objectList])
+            render(template: view, model: [objectList: result.objectList, flash: flash])
         } else {
-            respond objectList
+            respond result.objectList
         }
     }
 
     def count() {
-        def (count, message) = commonQueryService.countFunction(params)
-        println("统计结果：${count}")
-        flash.message = message
-        if (count) {
-            if (count[0] < 0) {
-                flash.message = "功能尚未实现....."
-                count = 0
-            }
-        }
-        def result = [count: count]
+        def result = commonQueryService.countFunction(params)
+        println("统计结果：${result.count}")
+        flash.message = "请完善count."
+        def cresult = [count: result.count]
         if (request.xhr) {
-            render result as JSON
+            render cresult as JSON
         } else {
             result
         }

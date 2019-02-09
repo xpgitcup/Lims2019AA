@@ -1,5 +1,6 @@
 package cn.edu.cup.lims
 
+import cn.edu.cup.system.QueryStatement
 import grails.gorm.services.Service
 
 @Service(QueryStatement)

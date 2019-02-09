@@ -39,6 +39,12 @@
         <li>
             <a href="operation4QueryStatement/importFromJsonFile" class="create">从Json文件导入</a>
         </li>
+        <li>
+            <a href="javascript: listToDo()">待编辑&完成</a>
+        </li>
+        <li>
+            <a>清除筛选条件</a>
+        </li>
     </ul>
 </div>
 

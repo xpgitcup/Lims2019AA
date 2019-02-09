@@ -18,28 +18,28 @@
         "menuAction": "Operation4SystemUser/index",
         "menuDescription": "对系统的用户进行用户友好的维护",
         "upMenuItem": "系统维护",
-        "menuOrder": 0
+        "menuOrder": 10
       },
       {
         "menuContext": "菜单维护",
         "menuAction": "Operation4SystemMenu/index",
         "menuDescription": "对系统的菜单用户进行用户友好的维护",
         "upMenuItem": "系统维护",
-        "menuOrder": 0
+        "menuOrder": 20
       },
       {
         "menuContext": "日志维护",
         "menuAction": "Operation4SystemLog/index",
         "menuDescription": "对系统的日志进行用户友好的维护",
         "upMenuItem": "系统维护",
-        "menuOrder": 0
+        "menuOrder": 30
       },
       {
         "menuContext": "查询维护",
         "menuAction": "operation4QueryStatement/index",
         "menuDescription": "对系统底层的查询语句进行维护",
         "upMenuItem": "系统维护",
-        "menuOrder": 0
+        "menuOrder": 40
       }
     ]
   },

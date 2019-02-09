@@ -1,4 +1,4 @@
-package cn.edu.cup.lims
+package cn.edu.cup.system
 
 class QueryStatement {
 
@@ -8,6 +8,7 @@ class QueryStatement {
     String viewName
     String paramsList
     String discription
+    Integer refCount = 0
 
     static constraints = {
         keyString(unique: true)
@@ -16,6 +17,7 @@ class QueryStatement {
         viewName(nullable: true)
         paramsList(nullable: true)
         discription(nullable: true)
+        refCount()
     }
 
     String toString() {

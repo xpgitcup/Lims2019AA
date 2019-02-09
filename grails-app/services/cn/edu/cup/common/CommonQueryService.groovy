@@ -1,8 +1,7 @@
 package cn.edu.cup.common
 
-import cn.edu.cup.lims.Person
-import cn.edu.cup.lims.QueryStatement
-import cn.edu.cup.lims.Thing
+
+import cn.edu.cup.system.QueryStatement
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -11,19 +10,19 @@ class CommonQueryService {
     def queryStatementService
     def dataSource
 
-    List listFunction(params) {
+    def listFunction(params) {
+        def result = [:]
         def keyString = generateKeyString(params)
-        def view = "list"
-        def message = ""
         def objectList
-        def queryStatement = QueryStatement.findByKeyString(keyString)
+        result.view = "default"
         def pl = []
+        def queryStatement = QueryStatement.findByKeyString(keyString)
         if (queryStatement) {
             if (queryStatement.hql || queryStatement.viewName) {
                 if (queryStatement.paramsList) {
                     pl.addAll(queryStatement.paramsList.split(","))
                 }
-                view = queryStatement.viewName
+                result.view = queryStatement.viewName
                 def ps = [:]
                 ps.offset = params.offset
                 ps.max = params.max
@@ -38,26 +37,29 @@ class CommonQueryService {
                     println("列表SQL: ${objectList}")
                 } else {
                     objectList = QueryStatement.executeQuery(queryStatement.hql, ps)
+                    result.objectList = objectList
                 }
             } else {
-                message = "请完善list查询."
+                result.message = "请完善list查询."
             }
         } else {
             def nq = new QueryStatement(keyString: keyString);
             queryStatementService.save(nq)
+            result.message = "创建新的list查询."
         }
-        return [view, objectList, message]
+        return result
     }
 
     Object countFunction(params) {
         def keyString = generateKeyString(params)
-        def count = 0
-        def message = ""
+        def result = [:]
+        result.count = -1
+        result.message = "请完善count查询!"
         def queryStatement = QueryStatement.findByKeyString(keyString)
         def pl = []
         if (queryStatement) {
             println("统计语句； ${queryStatement.hql}")
-            if (queryStatement.hql) {
+            if (queryStatement.hql!='') {
                 if (queryStatement.paramsList) {
                     pl.addAll(queryStatement.paramsList.split(","))
                 }
@@ -84,7 +86,7 @@ class CommonQueryService {
             queryStatementService.save(nq)
             count = -1
         }
-        return [count, message]
+        result
     }
 
     private def generateKeyString(params) {
