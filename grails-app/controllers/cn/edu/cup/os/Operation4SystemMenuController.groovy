@@ -1,10 +1,30 @@
 package cn.edu.cup.os
 
+import cn.edu.cup.system.JsFrame
+import cn.edu.cup.system.SystemMenu
 import grails.converters.JSON
 
 class Operation4SystemMenuController {
 
     def commonQueryService
+    def treeViewService
+
+    /*
+    * 获取json格式的树形结构数据
+    * */
+
+    def getTreeViewData() {
+        def data = SystemMenu.findAllByUpMenuItemIsNull(params)     //这是必须调整的
+        params.context = "menuContext"
+        params.subItems = "menuItems"
+        params.attributes = "id"    //
+        def result = treeViewService.generateNodesString(data, params, JsFrame.EasyUI)
+        if (request.xhr) {
+            render result as JSON
+        } else {
+            result
+        }
+    }
 
     def list() {
         println("${params}")
@@ -29,5 +49,5 @@ class Operation4SystemMenuController {
         }
     }
 
-    def index() { }
+    def index() {}
 }

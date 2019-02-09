@@ -25,6 +25,7 @@ function configDisplayUI(settings) {
 
     var panelDiv;
     var paginationDiv;
+    var treeViewUl;
     var title;
     var localPageSize;
 
@@ -35,14 +36,25 @@ function configDisplayUI(settings) {
         localPageSize = defaultPageSize;
     }
 
+    console.info(settings.isTreeView);
+
     if (titles.length < 2) {
         title = titles[0];
         // 添加显示元件
         panelDiv = addNewPanelDiv(title, theDiv);
+
+        if (settings.isTreeView != undefined) {
+            if (settings.isTreeView[0]) {
+                treeViewUl = addNewTreeView(title, theDiv);
+            }
+        }
+
         paginationDiv = addNewPaginationDiv(title, theDiv);
-        var currentPage = readCookie("currentPage" + title, 1);
         // 设置参数
         console.info("开始设置参数......")
+
+        // 分页处理
+        var currentPage = readCookie("currentPage" + title, 1);
         var total = countFunction(title)
         paginationDiv.pagination({
             pageSize: localPageSize,
@@ -57,9 +69,21 @@ function configDisplayUI(settings) {
                 loadFunction(title, pageNumber, pageSize);
             }
         })
-        panelDiv.panel({
-            href: loadFunction(title, currentPage, localPageSize)
-        })
+        // 单页的显示--加载数据
+        if ((settings.isTreeView == undefined)) {
+            panelDiv.panel({
+                href: loadFunction(title, currentPage, localPageSize)
+            })
+        } else {
+            if (settings.isTreeView[0]) {
+                treeViewUl.tree({
+                    url: settings.treeData[0],
+                    onLoadSuccess: function () {
+                        treeViewUl.tree("collapseAll");
+                    }
+                })
+            }
+        }
     } else {
         // 添加显示元件
         for (var i in titles) {

@@ -1,6 +1,8 @@
 var operation4SystemMenuDiv;
 var jsTitle = "系统菜单";
 var title4SystemMenu = [jsTitle]
+var isTreeView4SystemMenu = [true]
+var treeData4SystemMenu = ["operation4SystemMenu/getTreeViewData"]
 
 $(function () {
     console.info(jsTitle + "......");
@@ -9,6 +11,10 @@ $(function () {
     var settings = {
         divId: operation4SystemMenuDiv,
         titles: title4SystemMenu,
+        //树形结构
+        isTreeView: isTreeView4SystemMenu,
+        treeData: treeData4SystemMenu,
+        //分页设置
         paginationMessage: "",
         pageList: [],
         showPageList: false,

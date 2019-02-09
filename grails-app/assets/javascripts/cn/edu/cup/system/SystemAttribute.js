@@ -1,6 +1,8 @@
 var operation4SystemAttributeDiv;
 var jsTitle = "系统属性";
 var title4SystemAttribute = [jsTitle]
+var isTreeView4SystemAttribute = [true]
+var treeData4SystemAttribute = ["operation4SystemAttribute/getTreeViewData"]
 
 $(function () {
     console.info(jsTitle + "......");
@@ -9,6 +11,9 @@ $(function () {
     var settings = {
         divId: operation4SystemAttributeDiv,
         titles: title4SystemAttribute,
+        // 有关树形结构的设置
+        isTreeView: isTreeView4SystemAttribute,
+        treeData: treeData4SystemAttribute,
         //paginationMessage: "",
         pageList: [],
         showPageList: false,
