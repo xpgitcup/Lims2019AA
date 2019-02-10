@@ -38,7 +38,32 @@ function configDisplayUI(settings) {
 
     console.info(settings.isTreeView);
 
+
     if (titles.length < 2) {
+        configSinglePanel();
+    } else {
+        // 添加显示元件
+        for (var i in titles) {
+            title = titles[i];
+
+            theDiv.tabs('add', {
+                title: title,
+                closable: false
+            })
+
+            //插入到tab中
+            tabsDiv.tabs('select', x)
+            var tab = tabsDiv.tabs('getSelected');
+            var listDiv = addNewNormalDiv(title, tab);
+            var paginationDiv = addNewPaginationDiv(title, tab);
+        }
+    }
+
+
+    /*
+    * 私有函数
+    * */
+    function configSinglePanel() {
         title = titles[0];
         // 添加显示元件
         panelDiv = addNewPanelDiv(title, theDiv);
@@ -88,29 +113,13 @@ function configDisplayUI(settings) {
                 })
             }
         }
-    } else {
-        // 添加显示元件
-        for (var i in titles) {
-            title = titles[i];
-
-            theDiv.tabs('add', {
-                title: title,
-                closable: false
-            })
-
-            //插入到tab中
-            tabsDiv.tabs('select', x)
-            var tab = tabsDiv.tabs('getSelected');
-            var listDiv = addNewNormalDiv(title, tab);
-            var paginationDiv = addNewPaginationDiv(title, tab);
-        }
     }
 
-
-    /*
-    * 私有函数
-    * */
-
+    function addTabsDiv(title, parentDiv) {
+        var tabsDiv = $('<div class="easyui-tabs"></div>');
+        tabsDiv.attr("id", "")
+    }
+    
     function addNewPaginationDiv(title, parentDiv) {
         //分页Div------加入到标签中
         var paginationDiv = $('<div class="easyui-pagination"></div>');
