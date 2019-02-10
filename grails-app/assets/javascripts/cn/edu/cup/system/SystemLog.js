@@ -9,13 +9,39 @@ $(function () {
     var settings = {
         divId: operation4SystemLogDiv,
         titles: title4SystemLog,
-        pageSize: 5,
+        pageSize: 10,
         loadFunction: loadSystemLog,
         countFunction: countSystemLog
     }
 
     configDisplayUI(settings);
 });
+
+/*
+ * 新建
+ * */
+function createSystemLog(id) {
+    console.info("创建SystemLog. 上级节点：" + id);
+    ajaxRun("operation4SystemLog/createSystemLog", id, "showSystemLogDiv");
+}
+
+/*
+ * 编辑
+ * */
+function editSystemLog(id) {
+    console.info("编辑SystemLog." + id);
+    ajaxRun("operation4SystemLog/editSystemLog", id, "showSystemLogDiv");
+}
+
+/*
+ * 显示当前属性
+ * */
+function showSystemLog(id) {
+    console.info("显示当前" + id);
+    if (id) {
+        ajaxRun("operation4SystemLog/getSystemLog", id, "showSystemLogDiv");
+    }
+}
 
 /*
 * 统计函数

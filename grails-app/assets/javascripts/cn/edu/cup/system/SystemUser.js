@@ -20,6 +20,32 @@ $(function () {
 });
 
 /*
+ * 新建
+ * */
+function createSystemUser(id) {
+    console.info("创建SystemUser. 上级节点：" + id);
+    ajaxRun("operation4SystemUser/createSystemUser", id, "showSystemUserDiv");
+}
+
+/*
+ * 编辑
+ * */
+function editSystemUser(id) {
+    console.info("编辑SystemUser." + id);
+    ajaxRun("operation4SystemUser/editSystemUser", id, "showSystemUserDiv");
+}
+
+/*
+ * 显示当前属性
+ * */
+function showSystemUser(id) {
+    console.info("显示当前" + id);
+    if (id) {
+        ajaxRun("operation4SystemUser/getSystemUser", id, "showSystemUserDiv");
+    }
+}
+
+/*
 * 统计函数
 * */
 function countSystemUser(title) {

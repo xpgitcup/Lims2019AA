@@ -14,7 +14,7 @@ $(function () {
         // 有关树形结构的设置
         isTreeView: isTreeView4SystemAttribute,
         treeData: treeData4SystemAttribute,
-        treeNodeDoSomeThing: systemAttributeNodeSelect,
+        treeNodeDoSomeThing: systemAttributeNodeSelect, //当节点被选择
         //paginationMessage: "",
         pageList: [],
         showPageList: false,
@@ -25,6 +25,36 @@ $(function () {
     configDisplayUI(settings);
 });
 
+/*
+* 新建
+* */
+function createSystemAttribute(id) {
+    console.info("创建SystemAttribute. 上级节点：" + id);
+    ajaxRun("operation4SystemAttribute/createSystemAttribute", id, "showSystemAttributeDiv");
+}
+
+/*
+* 编辑
+* */
+function editSystemAttribute(id) {
+    console.info("编辑SystemAttribute." + id);
+    ajaxRun("operation4SystemAttribute/editSystemAttribute", id, "showSystemAttributeDiv");
+}
+
+/*
+* 显示节点信息
+* */
+function showSystemAttribute(node) {
+    console.info(jsTitle + "+节点显示......" + node);
+    if (node) {
+        var id = node.attributes[0];
+        ajaxRun("operation4SystemAttribute/show", id, "showSystemAttributeDiv");
+    }
+}
+
+/*
+* 节点被选择。。。
+* */
 function systemAttributeNodeSelect(node) {
     console.info(jsTitle + "+节点选择......" + node);
     showSystemAttribute(node);

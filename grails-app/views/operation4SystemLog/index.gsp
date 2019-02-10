@@ -48,6 +48,8 @@
 
                 <div class="easyui-panel" id="operation4SystemLogDiv">
                 </div>
+                <div class="easyui-panel" id="showSystemLogDiv">
+                </div>
             </div>
         </div>
 

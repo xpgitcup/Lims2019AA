@@ -2,12 +2,62 @@ package cn.edu.cup.os
 
 import cn.edu.cup.system.JsFrame
 import cn.edu.cup.system.SystemMenu
+import cn.edu.cup.system.SystemMenuController
 import grails.converters.JSON
 
-class Operation4SystemMenuController {
+class Operation4SystemMenuController extends SystemMenuController {
 
     def commonQueryService
     def treeViewService
+
+    /*
+    * 获取当前id对应的对象
+    * */
+
+    def getSystemMenu(SystemMenu systemMenu) {
+        def theModel = [systemMenu: systemMenu]
+        if (request.xhr) {
+            render(template: "showSystemMenu", model: theModel)
+        } else {
+            theModel
+        }
+    }
+
+    /*
+    * 创建对象
+    * */
+
+    def createSystemMenu(SystemMenu systemMenu) {
+        def newSystemMenu = new SystemMenu(upMenuItem: systemMenu)
+        if (request.xhr) {
+            render(template: 'editSystemMenu', model: [systemMenu: newSystemMenu])
+        } else {
+            respond newSystemMenu
+        }
+    }
+
+    /*
+    * 保存对象
+    * */
+
+    def updateSystemMenu(SystemMenu systemMenu) {
+        println("准备更新：${systemMenu}")
+        //systemMenu.save flush:true
+        systemMenuService.save(systemMenu)
+        redirect(action: 'index')
+    }
+
+    /*
+    * 编辑对象
+    * */
+
+    def editSystemMenu(SystemMenu systemMenu) {
+        if (request.xhr) {
+            render(template: 'editSystemMenu', model: [systemMenu: systemMenu])
+        } else {
+            respond systemMenu
+        }
+    }
 
     /*
     * 获取json格式的树形结构数据

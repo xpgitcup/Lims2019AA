@@ -11,6 +11,51 @@ class Operation4SystemAttributeController extends SystemAttributeController {
     def treeViewService
 
     /*
+    * 创建对象
+    * */
+    def createSystemAttribute(SystemAttribute systemAttribute) {
+        def newSystemAttribute = new SystemAttribute(upAttribute: systemAttribute)
+        if (request.xhr) {
+            render(template: 'editSystemAttribute', model: [systemAttribute: newSystemAttribute])
+        } else {
+            respond newSystemAttribute
+        }
+    }
+
+    /*
+    * 保存对象
+    * */
+    def updateSystemAttribute(SystemAttribute systemAttribute) {
+        println("准备更新：${systemAttribute}")
+        systemAttributeService.save(systemAttribute)
+        redirect(action: 'index')
+    }
+
+    /*
+    * 编辑对象
+    * */
+    def editSystemAttribute(SystemAttribute systemAttribute) {
+        if (request.xhr) {
+            render(template: 'editSystemAttribute', model: [systemAttribute: systemAttribute])
+        } else {
+            respond systemAttribute
+        }
+    }
+
+    /*
+    * 显示当前id对应的对象
+    * */
+
+    def show(SystemAttribute systemAttribute) {
+        def theModel = [systemAttribute: systemAttribute]
+        if (request.xhr) {
+            render(template: "showSystemAttribute", model: theModel)
+        } else {
+            theModel
+        }
+    }
+
+    /*
     * 获取json格式的树形结构数据
     * */
 
