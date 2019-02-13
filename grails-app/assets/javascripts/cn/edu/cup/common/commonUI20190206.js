@@ -40,7 +40,6 @@ function configDisplayUI(settings) {
     console.info(settings.isTreeView);
 
 
-
     if (titles.length < 2) {
         // 只有一个Panel的情况
         configSinglePanel();
@@ -54,27 +53,43 @@ function configDisplayUI(settings) {
     * 私有函数
     * */
     function configTabs() {
-
         title = settings.tabTitle;
         tabsDiv = theDiv;
-
         for (var i in titles) {
             title = titles[i];
-
             tabsDiv.tabs('add', {
                 title: title,
                 closable: false
             })
-
             //插入到tab中
             tabsDiv.tabs('select', i)
             var tab = tabsDiv.tabs('getSelected');
             var listDiv = addNewNormalDiv(title, tab);
             var paginationDiv = addNewPaginationDiv(title, tab);
         }
+        // 设置参数
+        console.info("开始设置多标签页的参数......")
+        // 当前页
+        var defaultTab = tabsDiv.tabs("tabs")[0].panel("options").title
+        console.info("缺省标签标题：" + defaultTab);
+        var currentTab = readCookie("current" + tabsName, defaultTab);
+
+        tabsDiv.tabs({
+            onSelect: function (title, index) {
+                //记录tabs的缺省页面，所以采用tabsName
+                console.info(tabsName + "--选择标签：" + title + "--" + index);
+                $.cookie("current" + tabsName, title, {path: '/'});
+                //------------------------------------------------------------------------------------------------------
+                var cPageNumber = readCookie("currentPage" + title, 1)
+                loadFunction(title, cPageNumber, pageSize)
+                //configPaginationParams4TabPage(title, cPageNumber, aCountFunction, aLoadFunction) // 必须重新设置
+            }
+        })
     }
 
-
+    /*
+    * 设置单个Panel
+    * */
     function configSinglePanel() {
         title = titles[0];
         // 添加显示元件
@@ -133,7 +148,7 @@ function configDisplayUI(settings) {
         tabsDiv.appendTo(parentDiv);
         return tabsDiv;
     }
-    
+
     function addNewPaginationDiv(title, parentDiv) {
         //分页Div------加入到标签中
         var paginationDiv = $('<div class="easyui-pagination"></div>');
