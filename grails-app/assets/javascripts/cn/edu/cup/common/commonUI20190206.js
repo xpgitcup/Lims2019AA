@@ -24,6 +24,7 @@ function configDisplayUI(settings) {
     var pageList = settings.pageList;
 
     var panelDiv;
+    var tabsDiv;
     var paginationDiv;
     var treeViewUl;
     var title;
@@ -39,20 +40,34 @@ function configDisplayUI(settings) {
     console.info(settings.isTreeView);
 
 
+
     if (titles.length < 2) {
+        // 只有一个Panel的情况
         configSinglePanel();
     } else {
-        // 添加显示元件
+        // 多个标签页面的情况
+        configTabs();
+    }
+
+
+    /*
+    * 私有函数
+    * */
+    function configTabs() {
+
+        title = settings.tabTitle;
+        tabsDiv = theDiv;
+
         for (var i in titles) {
             title = titles[i];
 
-            theDiv.tabs('add', {
+            tabsDiv.tabs('add', {
                 title: title,
                 closable: false
             })
 
             //插入到tab中
-            tabsDiv.tabs('select', x)
+            tabsDiv.tabs('select', i)
             var tab = tabsDiv.tabs('getSelected');
             var listDiv = addNewNormalDiv(title, tab);
             var paginationDiv = addNewPaginationDiv(title, tab);
@@ -60,9 +75,6 @@ function configDisplayUI(settings) {
     }
 
 
-    /*
-    * 私有函数
-    * */
     function configSinglePanel() {
         title = titles[0];
         // 添加显示元件
@@ -117,7 +129,9 @@ function configDisplayUI(settings) {
 
     function addTabsDiv(title, parentDiv) {
         var tabsDiv = $('<div class="easyui-tabs"></div>');
-        tabsDiv.attr("id", "")
+        tabsDiv.attr("id", "tabs" + title + "Div");
+        tabsDiv.appendTo(parentDiv);
+        return tabsDiv;
     }
     
     function addNewPaginationDiv(title, parentDiv) {

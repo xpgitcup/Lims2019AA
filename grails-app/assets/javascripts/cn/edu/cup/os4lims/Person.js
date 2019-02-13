@@ -1,6 +1,7 @@
 var operation4PersonDiv;
 var jsTitlePerson = ["教师", "学生", "专业"];
 var title4Person = jsTitlePerson;
+var tabsTitle = "人员维护";
 var localPageSizePerson = 5;
 
 $(function () {
@@ -10,6 +11,7 @@ $(function () {
     var settings = {
         divId: operation4PersonDiv,
         titles: title4Person,
+        tabsTitle: tabsTitle,
         pageSize: localPageSizePerson,
         pageList: [1, 3, 5, 10],
         loadFunction: loadPerson,
