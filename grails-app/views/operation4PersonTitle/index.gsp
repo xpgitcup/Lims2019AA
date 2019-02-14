@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <!--meta name="layout" content="main"/-->
+<!--meta name="layout" content="main"/-->
 <!-- 实现可定制的布局 -->
     <g:if test="${layout}">
         <meta name="layout" content="${layout}"/>
@@ -47,7 +47,15 @@
     <div class="message" role="status">${flash.message}</div>
 </g:if>
 
-<div id="operation4PersonTitleDiv" class="easyui-tabs">
+<div class="container-fluid">
+    <div class="col-md-6">
+        <div id="operation4PersonTitleDiv" class="easyui-panel"></div>
+    </div>
+
+    <div class="col-md-6">
+        <div id="showPersonTitleDiv" class="easyui-panel"></div>
+    </div>
 </div>
+
 </body>
 </html>

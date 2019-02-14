@@ -40,7 +40,7 @@ function configDisplayUI(settings) {
 
 
     if (titles.length < 2) {
-        // 只有一个Panel的情况
+        console.info("只有一个Panel的情况：");
         configSinglePanel();
     } else {
         // 多个标签页面的情况
@@ -123,6 +123,7 @@ function configDisplayUI(settings) {
         if (settings.isTreeView != undefined) {
             if (settings.isTreeView[0]) {
                 treeViewUl = addNewTreeView(title, theDiv);
+                console.info("创建树形结构!")
             }
         }
 

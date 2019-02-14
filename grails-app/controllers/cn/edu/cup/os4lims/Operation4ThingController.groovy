@@ -1,8 +1,9 @@
 package cn.edu.cup.os4lims
 
+import cn.edu.cup.lims.ThingController
 import grails.converters.JSON
 
-class Operation4ThingController {
+class Operation4ThingController extends ThingController{
 
     def commonQueryService
 
