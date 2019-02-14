@@ -70,13 +70,14 @@ function configDisplayUI(settings) {
         // 当前页
         var defaultTab = tabsDiv.tabs("tabs")[0].panel("options").title
         console.info("缺省标签标题：" + defaultTab);
-        var currentTab = readCookie("current" + title, defaultTab);
+        var currentTab = readCookie("current" + tabsName, defaultTab);
 
         tabsDiv.tabs({
             onSelect: function (title, index) {
                 //记录tabs的缺省页面，所以采用tabsName
                 console.info(tabsName + "--选择标签：" + title + "--" + index);
-                $.cookie("current" + tabsName, title, {path: '/'});
+                //$.cookie("current" + tabsName, title, {path: '/'});
+                $.cookie("current" + tabsName, title);
                 //------------------------------------------------------------------------------------------------------
                 var cPageNumber = readCookie("currentPage" + title, 1)
                 loadFunction(title, cPageNumber, localPageSize)
