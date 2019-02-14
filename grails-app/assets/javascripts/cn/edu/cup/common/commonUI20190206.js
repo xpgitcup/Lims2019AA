@@ -119,7 +119,7 @@ function configDisplayUI(settings) {
         var tabsDiv = $('<div class="easyui-tabs"></div>');
         tabsDiv.attr("id", "")
     }
-    
+
     function addNewPaginationDiv(title, parentDiv) {
         //分页Div------加入到标签中
         var paginationDiv = $('<div class="easyui-pagination"></div>');
