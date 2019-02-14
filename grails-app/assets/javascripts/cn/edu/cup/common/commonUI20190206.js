@@ -27,7 +27,6 @@ function configDisplayUI(settings) {
     var tabsDiv;
     var paginationDiv;
     var treeViewUl;
-    var title;
     var localPageSize;
 
     //处理页面长度
@@ -48,15 +47,14 @@ function configDisplayUI(settings) {
         configTabs();
     }
 
-
     /*
     * 私有函数
     * */
     function configTabs() {
-        title = settings.tabTitle;
+        var tabsName = settings.tabTitle;
         tabsDiv = theDiv;
         for (var i in titles) {
-            title = titles[i];
+            var title = titles[i];
             tabsDiv.tabs('add', {
                 title: title,
                 closable: false
@@ -72,7 +70,7 @@ function configDisplayUI(settings) {
         // 当前页
         var defaultTab = tabsDiv.tabs("tabs")[0].panel("options").title
         console.info("缺省标签标题：" + defaultTab);
-        var currentTab = readCookie("current" + tabsName, defaultTab);
+        var currentTab = readCookie("current" + title, defaultTab);
 
         tabsDiv.tabs({
             onSelect: function (title, index) {
@@ -81,31 +79,20 @@ function configDisplayUI(settings) {
                 $.cookie("current" + tabsName, title, {path: '/'});
                 //------------------------------------------------------------------------------------------------------
                 var cPageNumber = readCookie("currentPage" + title, 1)
-                loadFunction(title, cPageNumber, pageSize)
-                //configPaginationParams4TabPage(title, cPageNumber, aCountFunction, aLoadFunction) // 必须重新设置
+                loadFunction(title, cPageNumber, localPageSize)
+                // 设置翻页
+                configPagination(title);
             }
-        })
+        });
+        // 打开缺省的标签
+        tabsDiv.tabs("select", currentTab);
     }
 
     /*
-    * 设置单个Panel
+    * 设置分页参数
     * */
-    function configSinglePanel() {
-        title = titles[0];
-        // 添加显示元件
-        panelDiv = addNewPanelDiv(title, theDiv);
-
-        if (settings.isTreeView != undefined) {
-            if (settings.isTreeView[0]) {
-                treeViewUl = addNewTreeView(title, theDiv);
-            }
-        }
-
-        paginationDiv = addNewPaginationDiv(title, theDiv);
-        // 设置参数
-        console.info("开始设置参数......")
-
-        // 分页处理
+    function configPagination(title) {
+        var paginationDiv = $("#pagination" + title + "Div")
         var currentPage = readCookie("currentPage" + title, 1);
         var total = countFunction(title)
         paginationDiv.pagination({
@@ -121,6 +108,29 @@ function configDisplayUI(settings) {
                 loadFunction(title, pageNumber, pageSize);
             }
         })
+        return currentPage;
+    }
+
+    /*
+     * 设置单个Panel
+     * */
+    function configSinglePanel() {
+        var title = titles[0];
+        // 添加显示元件
+        panelDiv = addNewPanelDiv(title, theDiv);
+
+        if (settings.isTreeView != undefined) {
+            if (settings.isTreeView[0]) {
+                treeViewUl = addNewTreeView(title, theDiv);
+            }
+        }
+
+        paginationDiv = addNewPaginationDiv(title, theDiv);
+        // 设置参数
+        console.info("开始设置参数......")
+
+        // 分页处理
+        var currentPage = configPagination(title);
         // 单页的显示--加载数据
         if ((settings.isTreeView == undefined)) {
             panelDiv.panel({

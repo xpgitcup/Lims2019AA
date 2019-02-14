@@ -1,8 +1,9 @@
 package cn.edu.cup.os4lims
 
+import cn.edu.cup.lims.PersonController
 import grails.converters.JSON
 
-class Operation4PersonController{
+class Operation4PersonController extends PersonController {
 
     def commonQueryService
 
@@ -30,5 +31,5 @@ class Operation4PersonController{
         }
     }
 
-    def index() { }
+    def index() {}
 }
