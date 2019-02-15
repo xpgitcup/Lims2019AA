@@ -30,36 +30,30 @@
 
 <body>
 
+<div class="nav">
+    <ul id="operation4ThingTypeUl">
+        <li><a>当前</a></li>
+        <li><a id="currentTitle"></a></li>
+        <li><a>||</a></li>
+        <li><a id="createRootItem" href="javascript: createItem(0)">创建根节点</a></li>
+        <li><a id="createItem" href="#"></a></li>
+        <li><a id="editItem" href="#"></a></li>
+        <li><a id="deleteItem" href="#"></a></li>
+        <li><a id="exportMatterType" href="operation4ThingType/exportToJsonFile/0" class="save">导出文件</a></li>
+    </ul>
+</div>
+
+<g:if test="${flash.message}">
+    <div class="message" role="status">${flash.message}</div>
+</g:if>
+
 <div class="container-fluid">
-    <div class="row-fluid">
+    <div class="col-md-6">
+        <div id="operation4ThingTypeDiv" class="easyui-panle"></div>
+    </div>
 
-        <div class="col-md-6">
-            <div class="nav">
-                <ul><li>任务类型维护</li></ul>
-            </div>
-            <div id="operation4ThingTypeDiv" class="easyui-panle"></div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="nav">
-                <ul id="operation4ThingTypeUl">
-                    <li><a>当前</a></li>
-                    <li><a id="currentTitle"></a></li>
-                    <li><a>||</a></li>
-                    <li><a id="createRootItem" href="javascript: createItem(0)">创建根节点</a></li>
-                    <li><a id="createItem" href="#"></a></li>
-                    <li><a id="editItem" href="#"></a></li>
-                    <li><a id="deleteItem" href="#"></a></li>
-                    <li><a id="exportMatterType" href="operation4ThingType/exportToJsonFile/0" class="save">导出文件</a></li>
-                </ul>
-            </div>
-
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-
-            <div id="showThingTypeDiv" class="easyui-panel"></div>
-        </div>
+    <div class="col-md-6">
+        <div id="showThingTypeDiv" class="easyui-panel"></div>
     </div>
 </div>
 

@@ -32,11 +32,20 @@ function listToDo() {
     ajaxRun("operation4Person/list" + params + "&key=" + title + ".TODO", 0, "list" + title + "Div");
 }
 
+function shiftDisplay(title) {
+    console.info("显示当前提示...")
+    $("#currentTemplate").html("下载[" + title + "]模板");
+    $("#currentTemplate").attr("href", "operation4Person/downloadTemplate?key=" + title);
+    $("#currentImport").html("导入[" + title + "]数据");
+    $("#importKey").attr("value", title);
+}
+
 /*
 * 统计函数
 * */
 function countPerson(title) {
     console.info(jsTitlePerson + "+统计......");
+    shiftDisplay(title);
     var total = ajaxCalculate("operation4Person/count?key=" + title);
     return total
 }

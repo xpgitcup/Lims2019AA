@@ -21,6 +21,14 @@ $(function () {
     configDisplayUI(settings);
 });
 
+function shiftDisplay(title) {
+    console.info("显示当前提示...")
+    $("#currentTemplate").html("下载[" + title + "]模板");
+    $("#currentTemplate").attr("href", "operation4Thing/downloadTemplate?key=" + title);
+    $("#currentImport").html("导入[" + title + "]数据");
+    $("#importKey").attr("value", title);
+}
+
 /*
 * 定位到需要编辑的记录
 * */
@@ -37,6 +45,7 @@ function listToDo() {
 * */
 function countThing(title) {
     console.info(jsTitleThing + "+统计......");
+    shiftDisplay(title);
     var total = ajaxCalculate("operation4Thing/count?key=" + title);
     return total
 }

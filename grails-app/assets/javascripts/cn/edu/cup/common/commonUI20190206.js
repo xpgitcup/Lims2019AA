@@ -165,6 +165,7 @@ function configDisplayUI(settings) {
                     },
                     onLoadSuccess: function () {
                         var cnodeid = readCookie("currentNode" + title, 0);
+                        console.info("上一次：" + cnodeid);
                         treeViewUl.tree("collapseAll");
                         if (cnodeid != 0) {
                             console.info("扩展到：" + cnodeid);

@@ -14,7 +14,7 @@ $(function () {
         // 有关树形结构的设置
         isTreeView: isTreeView4ThingType,
         treeData: treeData4ThingType,
-        treeNodeDoSomeThing: systemAttributeNodeSelect, //当节点被选择
+        treeNodeDoSomeThing: changeUpNode, //当节点被选择
         //paginationMessage: "",
         pageList: [],
         showPageList: false,
@@ -25,43 +25,34 @@ $(function () {
     configDisplayUI(settings);
 });
 
-/*
-* 新建
-* */
-function createThingType(id) {
-    console.info("创建ThingType. 上级节点：" + id);
-    ajaxRun("operation4ThingType/createThingType", id, "showThingTypeDiv");
+function showCurrent(title) {
+    $("#currentTitle").html("请选择...");
 }
 
-/*
-* 编辑
-* */
-function editThingType(id) {
-    console.info("编辑ThingType." + id);
-    ajaxRun("operation4ThingType/editThingType", id, "showThingTypeDiv");
+function editItem(id) {
+    //var title = getCurrentTabTitle(operation4ThingTypeDiv);
+    ajaxRun("operation4ThingType/edit", id, "showThingTypeDiv");
 }
 
-/*
-* 显示节点信息
-* */
-function showThingType(node) {
-    console.info(jsTitle + "+节点显示......" + node);
-    if (node) {
-        var id = node.attributes[0];
-        ajaxRun("operation4ThingType/show", id, "showThingTypeDiv");
-    }
+function createItem(id) {
+    //var title = getCurrentTabTitle(operation4ThingTypeDiv);
+    //ajaxRun("operation4ThingType/create/?upTitle=" + id, 0, "list" + title + "Div");
+    ajaxRun("operation4ThingType/create", id, "showThingTypeDiv");
 }
 
 /*
 * 节点被选择。。。
 * */
-function systemAttributeNodeSelect(node) {
-    console.info(jsTitle + "+节点选择......" + node);
-    showThingType(node);
-    $("#createThingType").attr('href', 'javascript: createThingType(' + node.attributes[0] + ')');
-    console.info(node);
-    console.info("当前节点：" + node.target.id);
-    $.cookie("currentThingType", node.target.id);
+function changeUpNode(node) {
+    console.info("修改根节点的id...")
+    $("#createItem").attr('href', 'javascript: createItem(' + node.attributes[0] + ')');
+    $("#createItem").html("创建" + node.attributes[0] + '的子节点');
+    $("#editItem").attr('href', 'javascript: editItem(' + node.attributes[0] + ')');
+    $("#editItem").html("编辑" + node.attributes[0] + '节点');
+    $("#deleteItem").attr('href', 'operation4ThingType/delete?id=' + node.attributes[0]);
+    $("#deleteItem").html("删除" + node.attributes[0] + '节点');
+    $("#currentTitle").html(node.text);
+    ajaxRun("operation4ThingType/show", node.attributes[0], "showThingTypeDiv");
 }
 
 /*
