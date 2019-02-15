@@ -14,7 +14,7 @@ $(function () {
         // 有关树形结构的设置
         isTreeView: isTreeView4PersonTitle,
         treeData: treeData4PersonTitle,
-        treeNodeDoSomeThing: systemAttributeNodeSelect, //当节点被选择
+        treeNodeDoSomeThing: changeUpNode, //当节点被选择
         //paginationMessage: "",
         pageList: [],
         showPageList: false,
@@ -25,9 +25,17 @@ $(function () {
     configDisplayUI(settings);
 });
 
+function editItem(id) {
+    ajaxRun("operation4PersonTitle/edit", id, "showPersonTitleDiv");
+}
+
 /*
 * 新建
 * */
+function createItem(id) {
+    ajaxRun("operation4PersonTitle/create", id, "showPersonTitleDiv");
+}
+
 function createPersonTitle(id) {
     console.info("创建PersonTitle. 上级节点：" + id);
     ajaxRun("operation4PersonTitle/createPersonTitle", id, "showPersonTitleDiv");
@@ -55,13 +63,16 @@ function showPersonTitle(node) {
 /*
 * 节点被选择。。。
 * */
-function systemAttributeNodeSelect(node) {
+function changeUpNode(node) {
     console.info(jsTitle + "+节点选择......" + node);
-    showPersonTitle(node);
-    $("#createPersonTitle").attr('href', 'javascript: createPersonTitle(' + node.attributes[0] + ')');
-    console.info(node);
-    console.info("当前节点：" + node.target.id);
-    $.cookie("currentPersonTitle", node.target.id);
+    console.info("修改根节点的id...")
+    $("#createItem").attr('href', 'javascript: createItem(' + node.attributes[0] + ')');
+    $("#createItem").html("创建" + node.attributes[0] + '的子节点');
+    $("#editItem").attr('href', 'javascript: editItem(' + node.attributes[0] + ')');
+    $("#editItem").html("编辑" + node.attributes[0] + '节点');
+    $("#deleteItem").attr('href', 'operation4PersonTitle/delete/' + node.attributes[0]);
+    $("#deleteItem").html("删除" + node.attributes[0] + '节点');
+    $("#currentTitle").html(node.text);
 }
 
 /*

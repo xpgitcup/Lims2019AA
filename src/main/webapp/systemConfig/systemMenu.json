@@ -62,28 +62,28 @@
         "menuAction": "Operation4ThingType/index",
         "menuDescription": "维护各种项目的类型数据",
         "upMenuItem": "基础维护",
-        "menuOrder": 0
+        "menuOrder": 2
       },
       {
         "menuContext": "任务圈维护",
         "menuAction": "Operation4ThingTypeAndPersonTitle/index",
         "menuDescription": "任务与人员类别之间建立联系",
         "upMenuItem": "基础维护",
-        "menuOrder": 0
+        "menuOrder": 4
       },
       {
         "menuContext": "人员数据",
         "menuAction": "Operation4Person/index",
         "menuDescription": "各种人员的基础数据",
         "upMenuItem": "基础维护",
-        "menuOrder": 0
+        "menuOrder": 1
       },
       {
         "menuContext": "项目数据",
         "menuAction": "Operation4Thing/index",
         "menuDescription": "各种项目的基础数据",
         "upMenuItem": "基础维护",
-        "menuOrder": 0
+        "menuOrder": 3
       }
     ]
   },

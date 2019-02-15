@@ -1,11 +1,25 @@
 package cn.edu.cup.os4lims
 
+import cn.edu.cup.lims.Person
 import cn.edu.cup.lims.PersonController
 import grails.converters.JSON
 
 class Operation4PersonController extends PersonController {
 
     def commonQueryService
+
+    /*
+    * 显示当前id对应的对象
+    * */
+
+    def show(Person person) {
+        def theModel = [Person: person]
+        if (request.xhr) {
+            render(template: "showPerson", model: theModel)
+        } else {
+            theModel
+        }
+    }
 
     def list() {
         println("${params}")

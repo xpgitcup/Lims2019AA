@@ -9,6 +9,22 @@
 
 var defaultPageSize = 10
 
+function getCurrentTabIndex(tabsDiv) {
+    var tab = getCurrentTab(tabsDiv)
+    var index = tabsDiv.tabs('getTabIndex', tab);
+    return index
+}
+
+function getCurrentTabTitle(tabsDiv) {
+    var tab = getCurrentTab(tabsDiv)
+    return tab.panel("options").title;
+}
+
+function getCurrentTab(tabsDiv) {
+    var tab = tabsDiv.tabs('getSelected');
+    return tab;
+}
+
 /*
 * 显示界面配置函数
 * */
@@ -143,11 +159,19 @@ function configDisplayUI(settings) {
                 treeViewUl.tree({
                     url: settings.treeData[0],
                     onSelect: function (node) {
-                        console.info("树形结构节点选择：" + node)
+                        console.info("树形结构节点选择：" + node.target.id);
+                        $.cookie("currentNode" + title, node.target.id);
                         treeNodeDoSomeThing(node)
                     },
                     onLoadSuccess: function () {
+                        var cnodeid = readCookie("currentNode" + title, 0);
                         treeViewUl.tree("collapseAll");
+                        if (cnodeid != 0) {
+                            console.info("扩展到：" + cnodeid);
+                            var cnode = $("#" + cnodeid);
+                            treeViewUl.tree("expandTo", cnode);
+                            treeViewUl.tree("select", cnode);
+                        }
                     }
                 })
             }
