@@ -119,7 +119,7 @@
     "menuItems": [
       {
         "menuContext": "团队管理",
-        "menuAction": "operation4TeamManageA/index",
+        "menuAction": "operation4Team/index",
         "menuDescription": "新生加入到系统中，创建用户",
         "upMenuItem": "教师服务",
         "menuOrder": 0
@@ -129,7 +129,7 @@
         "menuAction": "operation4Progress/index",
         "menuDescription": "新生加入到系统中，创建用户",
         "upMenuItem": "教师服务",
-        "menuOrder": 0
+        "menuOrder": 1
       }
     ]
   },

@@ -37,8 +37,8 @@ class CommonQueryService {
                     println("列表SQL: ${objectList}")
                 } else {
                     objectList = QueryStatement.executeQuery(queryStatement.hql, ps)
-                    result.objectList = objectList
                 }
+                result.objectList = objectList
             } else {
                 result.message = "请完善list查询."
             }
@@ -57,7 +57,7 @@ class CommonQueryService {
         //查询SQL语句
         def queryStatement = QueryStatement.findByKeyString(keyString)
         if (queryStatement) {
-            println("统计语句； ${queryStatement.hql}")
+            //println("统计语句； ${queryStatement.hql}")
             if (queryStatement.hql) {
                 if (queryStatement.paramsList) {
                     pl.addAll(queryStatement.paramsList.split(","))
@@ -66,14 +66,14 @@ class CommonQueryService {
                 pl.each { e ->
                     ps.put(e, params.get(e))
                 }
-                println("count 参数：${ps}")
+                //println("count 参数：${ps}")
                 // 区分HQL以及SQL
                 if (queryStatement.isSQL) {
                     def db = new groovy.sql.Sql(dataSource)
-                    println("执行SQL ${queryStatement.hql}")
+                    //println("执行SQL ${queryStatement.hql}")
                     def c = db.rows(ps, queryStatement.hql)
                     count = [c[0].getProperty('count(*)')]
-                    println("SQL 执行结果：${count}")
+                    //println("SQL 执行结果：${count}")
                 } else {
                     count = QueryStatement.executeQuery(queryStatement.hql, ps)
                 }
@@ -88,17 +88,19 @@ class CommonQueryService {
     private def generateKeyString(params) {
         //println("内部：${params}")
         def keyString = ""
-        def exclude = ["offset", "max", "id", "format"]
-        def include = ["controller", "action", "key"]
+        def exclude = ["offset", "max", "id", "format"] // 参数中不包含的，一律忽略
+        def include = ["controller", "action", "key"]   // 参数中包含的，只包含值--将参数值包含其中
         params.keySet().sort().each { e ->
             if (!exclude.contains(e)) {
                 if (include.contains(e)) {
+                    // 包含的，将关键字的值，列入其中
                     if (keyString.isEmpty()) {
                         keyString += "${params.get(e)}"
                     } else {
                         keyString += ".${params.get(e)}"
                     }
                 } else {
+                    // 将关键字列入其中
                     if (keyString.isEmpty()) {
                         keyString += "${e}"
                     } else {

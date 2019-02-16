@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <!--meta name="layout" content="main"/-->
+<!--meta name="layout" content="main"/-->
 <!-- 实现可定制的布局 -->
     <g:if test="${layout}">
         <meta name="layout" content="${layout}"/>
@@ -22,29 +22,20 @@
         </g:else>
     </g:else>
 <!-- end 实现可定制的布局 -->
-    <g:set var="entityName" value="QueryStatement"/>
+    <g:set var="entityName" value="Progress"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${entityName}维护</title>
-    <asset:javascript src="cn/edu/cup/system/${entityName}.js"/>
+    <asset:javascript src="cn/edu/cup/os4lims/${entityName}.js"/>
 </head>
 
 <body>
 
 <div class="nav">
-    <ul id="operation4QueryStatementUl">
-        <li></li>
-        <li>
-            <a href="operation4QueryStatement/exportToJsonFile" class="save">导出Json文件</a>
-        </li>
-        <li>
-            <a href="operation4QueryStatement/importFromJsonFile" class="create">从Json文件导入</a>
-        </li>
-        <li>
-            <a href="javascript: listToDo()">待编辑&完成</a>
-        </li>
-        <li>
-            <a href="javascript: clearFilter()">清除筛选条件</a>
-        </li>
+    <ul id="operation4ProgressUl">
+        <li class="icon-help">&nbsp&nbsp&nbsp&nbsp：</li>
+        <li id="tipsOperation4Progress"></li>
+        <li>当前：</li>
+        <li id="currentSelect"></li>
     </ul>
 </div>
 
@@ -52,7 +43,8 @@
     <div class="message" role="status">${flash.message}</div>
 </g:if>
 
-<div id="operation4QueryStatementDiv" class="easyui-panel">
+<div id="operation4ProgressDiv" class="easyui-tabs">
 </div>
+
 </body>
 </html>

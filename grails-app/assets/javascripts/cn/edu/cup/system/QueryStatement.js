@@ -11,7 +11,7 @@ $(function () {
         divId: operation4QueryStatementDiv,
         titles: title4QueryStatement,
         pageSize: localPageSizeQueryStatement,
-        pageList: [1,3,5,10],
+        pageList: [1, 3, 5, 10],
         loadFunction: loadQueryStatement,
         countFunction: countQueryStatement
     }
@@ -31,10 +31,31 @@ function deleteItem(id) {
 * */
 function listToDo() {
     console.info(jsTitleQueryStatement + "+待完成......");
-    var title = jsTitleQueryStatement;
-    var page = 1;   //每次都定位到第一页
-    var params = getParams(page, localPageSizeQueryStatement);    //getParams必须是放在最最前面！！
-    ajaxRun("operation4QueryStatement/list" + params + "&key=" + title + ".TODO", 0, "list" + title + "Div");
+    $.cookie("filter", true);
+    location.reload();
+}
+
+/*
+* 清除过滤条件
+* */
+function clearFilter() {
+    $.cookie("filter", "");
+    location.reload();
+}
+
+/*
+* 附加参数
+* */
+function appendParam() {
+    var filter = false
+    filter = readCookie("filter", false);
+    console.info("过滤状态：" + filter);
+    var param = ""
+    if (filter) {
+        param = "&filter=true"
+    }
+    console.info("附加参数：" + param);
+    return param
 }
 
 /*
@@ -42,7 +63,7 @@ function listToDo() {
 * */
 function countQueryStatement(title) {
     console.info(jsTitleQueryStatement + "+统计......");
-    var total = ajaxCalculate("operation4QueryStatement/count?key=" + title);
+    var total = ajaxCalculate("operation4QueryStatement/count?key=" + title + appendParam());
     return total
 }
 
@@ -52,5 +73,5 @@ function countQueryStatement(title) {
 function loadQueryStatement(title, page, pageSize) {
     console.info(jsTitleQueryStatement + "+数据加载......" + title + " 第" + page + "页/" + pageSize);
     var params = getParams(page, pageSize);    //getParams必须是放在最最前面！！
-    ajaxRun("operation4QueryStatement/list" + params + "&key=" + title, 0, "list" + title + "Div");
+    ajaxRun("operation4QueryStatement/list" + params + "&key=" + title + appendParam(), 0, "list" + title + "Div");
 }

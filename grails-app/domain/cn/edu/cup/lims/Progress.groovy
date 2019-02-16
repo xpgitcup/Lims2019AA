@@ -21,7 +21,7 @@ class Progress {
     }
 
     String toString() {
-        return "${thing}.${contributor}.${regDate}.progress"
+        return "${team}.${contributor}.${regDate}.progress"
     }
 
 }

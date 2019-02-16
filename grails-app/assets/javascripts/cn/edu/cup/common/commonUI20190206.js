@@ -26,6 +26,47 @@ function getCurrentTab(tabsDiv) {
 }
 
 /*
+* 设置页面的指示信息
+* */
+function setupDisplayUl(ulId, tabsNameList) {
+    for (i in tabsNameList) {
+        var title = tabsNameList[i];
+        var lia = $("<li>当前[" + title + "]：</li>");
+        var lib = $("<li></li>");
+        var lic = $("<li>||</li>");
+        lib.attr("id", "currentKey" + title);
+        lia.appendTo(ulId);
+        lib.appendTo(ulId);
+        lic.appendTo(ulId);
+    }
+}
+
+/*
+* 刷新页面的指示信息
+* */
+function reflashDisplayUl(ulId, tabsNameList) {
+    for (i in tabsNameList) {
+        var title = tabsNameList[i];
+        var key = "currentKey" + title;
+        var id = readCookie(key, -1);
+        $("#" + key).html(id);
+    }
+}
+
+/*
+* 读取、调入所有页面指示标志
+* */
+function loadAllDisplayTitleId(idList) {
+    var currentId
+    var ids = new Array()
+    for (index in idList) {
+        currentId = readCookie("currentKey" + idList[index], 0)
+        ids[index] = currentId
+    }
+    return ids
+}
+
+/*
 * 显示界面配置函数
 * */
 function configDisplayUI(settings) {

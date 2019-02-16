@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-16 11:57:10
+Date: 2019-02-16 21:47:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `query_statement` (
   `view_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_iejb2adhrl11w1nanxv8r9hql` (`key_string`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of query_statement
@@ -58,3 +58,17 @@ INSERT INTO `query_statement` VALUES ('49', '0', null, 'from Course course order
 INSERT INTO `query_statement` VALUES ('50', '0', null, 'select count(*) from Course course', '0', '\0', 'count.operation4Thing.教学', null);
 INSERT INTO `query_statement` VALUES ('53', '1', null, 'select count(*) from ThingTypeCircle thingTypeCircle', '0', '\0', 'count.operation4ThingTypeCircle.任务分配', null);
 INSERT INTO `query_statement` VALUES ('54', '1', null, 'from ThingTypeCircle thingTypeCircle order by thingType', '0', '\0', 'list.operation4ThingTypeCircle.任务分配', 'listThingTypeCircle');
+INSERT INTO `query_statement` VALUES ('64', '1', 'thingTypeList', 'from Thing thing where thing.thingType in :thingTypeList', '0', '\0', 'list.operation4Team.可选题目.thingTypeList', 'listThing');
+INSERT INTO `query_statement` VALUES ('65', '1', 'thingTypeList', 'select count(*) from Thing thing where thing.thingType in :thingTypeList', '0', '\0', 'count.operation4Team.可选题目.thingTypeList', null);
+INSERT INTO `query_statement` VALUES ('80', '2', null, 'select count(*) from QueryStatement queryStatement where queryStatement.hql is null', '0', '\0', 'count.operation4QueryStatement.filter.查询配置', null);
+INSERT INTO `query_statement` VALUES ('81', '2', null, 'from QueryStatement queryStatement where queryStatement.hql is null  order by keyString', '0', '\0', 'list.operation4QueryStatement.filter.查询配置', 'listQueryStatement');
+INSERT INTO `query_statement` VALUES ('82', '3', 'currentThing', 'from Team team where team.thing=:currentThing', '0', '\0', 'list.operation4Team.currentThing.相关团队', 'listTeam');
+INSERT INTO `query_statement` VALUES ('83', '3', 'currentThing', 'select count(*) from Team team where team.thing=:currentThing', '0', '\0', 'count.operation4Team.currentThing.相关团队', null);
+INSERT INTO `query_statement` VALUES ('96', '1', 'myself', 'from Team team where team.leader=:myself', '0', '\0', 'list.operation4Progress.我领导的.myself', 'listTeam');
+INSERT INTO `query_statement` VALUES ('97', '2', 'myself', 'select count(*) from Team team where team.leader=:myself', '0', '\0', 'count.operation4Progress.我领导的.myself', 'listTeam');
+INSERT INTO `query_statement` VALUES ('98', '3', 'myself', 'select team_members_id  from team_person where person_id=:myself', '0', '', 'list.operation4Progress.我参与的.myself', 'listTeam');
+INSERT INTO `query_statement` VALUES ('104', '3', 'myself', 'select count(*) from team_person where person_id=:myself', '0', '', 'count.operation4Progress.我参与的.myself', null);
+INSERT INTO `query_statement` VALUES ('109', '2', 'currentTeam', 'from Progress progress where progress.team=:currentTeam', '0', '\0', 'list.operation4Progress.currentTeam.进度查看', 'listProgress');
+INSERT INTO `query_statement` VALUES ('110', '2', 'currentTeam', 'select count(*) from Progress progress where progress.team=:currentTeam', '0', '\0', 'count.operation4Progress.currentTeam.进度查看', 'listProgress');
+INSERT INTO `query_statement` VALUES ('115', '0', null, null, '0', '\0', 'list.operation4Progress.反馈信息', null);
+INSERT INTO `query_statement` VALUES ('116', '0', null, null, '0', '\0', 'count.operation4Progress.反馈信息', null);
