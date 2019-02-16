@@ -198,3 +198,21 @@ function ajaxExecute(url) {
         }
     });
 }
+
+/*
+* 只是执行
+* */
+function ajaxExecuteWithMethod(url, method) {
+    //console.info("开始计算--" + url);
+    var result = 0;
+    $.ajax({
+        type: method,
+        url: url,
+        async: false,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.info(XMLHttpRequest);
+            console.info(textStatus);
+            console.info(errorThrown);
+        }
+    });
+}

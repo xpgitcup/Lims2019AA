@@ -11,8 +11,6 @@ class Operation4ThingTypeController extends ThingTypeController {
     def commonQueryService
     def treeViewService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
     def show(Long id) {
         def thingType = thingTypeService.get(id)
         println("show ${thingType}")

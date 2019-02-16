@@ -40,7 +40,7 @@
                 <td>
                     ${item.keyString}
                     <a href="operation4QueryStatement/edit/${item.id}">编辑</a>
-                    <a href="operation4QueryStatement/delete/${item.id}">删除</a>
+                    <a href="javascript: deleteItem(${item.id})">删除</a>
                 </td>
                 <td>${item.hql}</td>
                 <td>${item.isSQL}</td>

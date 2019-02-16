@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-15 09:19:05
+Date: 2019-02-16 11:57:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `query_statement` (
   `view_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_iejb2adhrl11w1nanxv8r9hql` (`key_string`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of query_statement
@@ -56,3 +56,5 @@ INSERT INTO `query_statement` VALUES ('47', '0', null, 'from Project project ord
 INSERT INTO `query_statement` VALUES ('48', '0', null, 'select count(*) from Project project', '0', '\0', 'count.operation4Thing.科研', null);
 INSERT INTO `query_statement` VALUES ('49', '0', null, 'from Course course order by name', '0', '\0', 'list.operation4Thing.教学', 'listCourse');
 INSERT INTO `query_statement` VALUES ('50', '0', null, 'select count(*) from Course course', '0', '\0', 'count.operation4Thing.教学', null);
+INSERT INTO `query_statement` VALUES ('53', '1', null, 'select count(*) from ThingTypeCircle thingTypeCircle', '0', '\0', 'count.operation4ThingTypeCircle.任务分配', null);
+INSERT INTO `query_statement` VALUES ('54', '1', null, 'from ThingTypeCircle thingTypeCircle order by thingType', '0', '\0', 'list.operation4ThingTypeCircle.任务分配', 'listThingTypeCircle');
