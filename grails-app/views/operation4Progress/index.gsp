@@ -46,5 +46,7 @@
 <div id="operation4ProgressDiv" class="easyui-tabs">
 </div>
 
+<div class="easyui-panel" id="editProgressDiv"></div>
+
 </body>
 </html>

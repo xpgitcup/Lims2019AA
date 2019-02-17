@@ -1,43 +1,30 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'progress.label', default: 'Progress')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#list-progress" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="list-progress" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${objectList}" />
-            <table>
-                <thead>
-                <th>团队</th>
-                </thead>
-                <tbody>
-                <g:each in="${objectList}" var="item" status="i">
-                    <tr class="${(i % 2 == 0 ? 'even' : 'odd')}">
-                        <td>
-                            ${item.team}
-                            <a href="javascript: selectCurrentItem(${item.id})">查看进度</a>
-                        </td>
-                    </tr>
-                </g:each>
 
-                </tbody>
-            </table>
-            <div class="paginationGrails">
-                <g:paginate total="${progressCount ?: 0}" />
-            </div>
-        </div>
-    </body>
-</html>
+<div id="list-progress" class="content scaffold-list" role="main">
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <f:table collection="${objectList}"/>
+    <table>
+        <thead>
+        <th>状态</th>
+        <th>贡献者</th>
+        <th>问题</th>
+        <th>支撑文件</th>
+        <th>日期</th>
+        </thead>
+        <tbody>
+        <g:each in="${objectList}" var="item" status="i">
+            <tr class="${(i % 2 == 0 ? 'even' : 'odd')}">
+                <td>
+                    ${item.currentStatus}
+                    <a href="javascript: checkEvaluate(${item.id})">查看反馈</a>
+                </td>
+                <td>${item.contributor}</td>
+                <td>${item.problemEncounter}</td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+
+</div>

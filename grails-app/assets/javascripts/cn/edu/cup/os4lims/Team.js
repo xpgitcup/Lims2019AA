@@ -72,7 +72,7 @@ function selectCurrentItem(id) {
 
 function listMembers(id) {
     selectCurrentItem(id)
-    operation4TeamDiv.tabs("select", "相关队员");
+    operation4TeamDiv.tabs("select", "队员列表");
 }
 
 /*

@@ -3,7 +3,7 @@ var operation4ProgressUl;
 var jsTitleProgress = ["我领导的", "我参与的", "进度查看", "反馈信息"];
 var title4Progress = jsTitleProgress;
 var tabsTitle = "任务管理";
-var localPageSizeProgress = 10;
+var localPageSizeProgress = 5;
 var tipsOperation4Progress;
 var currentSelect;
 
@@ -31,6 +31,21 @@ $(function () {
     reflashDisplayUl(operation4ProgressUl, jsTitleProgress);
 
 });
+
+function createProgress(id) {
+    console.info("创建新进度...")
+    ajaxRun("operation4Progress/createProgress", id, "editProgressDiv");
+}
+
+function checkEvaluate(id) {
+    selectCurrentItem(id)
+    operation4ProgressDiv.tabs("select", "反馈信息");
+}
+
+function checkProgress(id) {
+    selectCurrentItem(id)
+    operation4ProgressDiv.tabs("select", "进度查看");
+}
 
 function selectCurrentItem(id) {
     var title = getCurrentTabTitle(operation4ProgressDiv)
@@ -75,7 +90,7 @@ function shiftDisplay(title) {
             }
             break
         case "反馈信息":
-            key += "当前进度";
+            key += "进度查看";
             id = readCookie(key, 0);
             console.info("当前id:" + key + "=" + id);
             if (id > 0) {

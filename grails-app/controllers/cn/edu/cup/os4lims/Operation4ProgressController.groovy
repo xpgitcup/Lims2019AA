@@ -5,10 +5,46 @@ import cn.edu.cup.lims.Progress
 import cn.edu.cup.lims.ProgressController
 import cn.edu.cup.lims.Team
 import grails.converters.JSON
+import grails.validation.ValidationException
+
+import static org.springframework.http.HttpStatus.CREATED
 
 class Operation4ProgressController extends ProgressController {
 
     def commonQueryService
+
+    def save(Progress progress) {
+        if (progress == null) {
+            notFound()
+            return
+        }
+
+        try {
+            progressService.save(progress)
+        } catch (ValidationException e) {
+            respond progress.errors, view: 'create'
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'progress.label', default: 'Progress'), progress.id])
+                redirect(action: "index")
+            }
+            '*' { respond progress, [status: CREATED] }
+        }
+    }
+
+    def createProgress(Team team) {
+        def myself = Person.get(session.realId)
+        def progress = new Progress(team: team, contributor: myself)
+        def view = "createProgress"
+        if (request.xhr) {
+            render(template: view, model: [progress: progress])
+        } else {
+            respond progress
+        }
+    }
 
     def list() {
         prepareParams()
@@ -46,6 +82,7 @@ class Operation4ProgressController extends ProgressController {
             result
         }
     }
+
     private void prepareParams() {
         def myself = Person.get(session.realId)
         switch (params.key) {

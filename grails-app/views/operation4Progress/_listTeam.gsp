@@ -27,7 +27,8 @@
             <tr class="${(i % 2 == 0 ? 'even' : 'odd')}">
                 <td>
                     ${item.leader}
-                    <a href="javascript: selectCurrentItem(${item.id})">查看进度</a>
+                    <a href="javascript: checkProgress(${item.id})">查看进度</a>
+                    <a href="javascript: createProgress(${item.id})">新增进度</a>
                 </td>
                 <td>
                     ${item.thing}
