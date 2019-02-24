@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : sample
-Source Server Version : 50722
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : lims2018bdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50722
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-01-12 18:02:01
+Date: 2019-02-24 17:13:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `system_user` (
   UNIQUE KEY `UK_204b9ercidw1baj3s3m9lnr33` (`user_name`),
   KEY `FKaiybevf5q198uok4va3p7b6wb` (`role_attribute_id`),
   CONSTRAINT `FKaiybevf5q198uok4va3p7b6wb` FOREIGN KEY (`role_attribute_id`) REFERENCES `system_attribute` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of system_user
@@ -82,3 +82,125 @@ INSERT INTO `system_user` VALUES ('45', '0', '25d55ad283aa400af464c76d713c07ad',
 INSERT INTO `system_user` VALUES ('46', '0', '25d55ad283aa400af464c76d713c07ad', '8', '2333', 'Teacher=左丽丽');
 INSERT INTO `system_user` VALUES ('47', '0', '25d55ad283aa400af464c76d713c07ad', '8', '2013880073', 'Teacher=史博会');
 INSERT INTO `system_user` VALUES ('48', '0', '25d55ad283aa400af464c76d713c07ad', '8', '2012880012', 'Teacher=温凯');
+INSERT INTO `system_user` VALUES ('49', '0', '25d55ad283aa400af464c76d713c07ad', '8', '2161', 'Teacher=邢晓凯');
+INSERT INTO `system_user` VALUES ('50', '0', '25d55ad283aa400af464c76d713c07ad', '8', '2166', 'Teacher=侯磊');
+INSERT INTO `system_user` VALUES ('51', '0', '25d55ad283aa400af464c76d713c07ad', '8', '2005', 'Teacher=李兆慈');
+INSERT INTO `system_user` VALUES ('52', '0', '25d55ad283aa400af464c76d713c07ad', '8', '1670', 'Teacher=黄启玉');
+INSERT INTO `system_user` VALUES ('53', '0', '25d55ad283aa400af464c76d713c07ad', '8', '1815', 'Teacher=李鸿英');
+INSERT INTO `system_user` VALUES ('54', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015314019', 'Student=虞维超');
+INSERT INTO `system_user` VALUES ('55', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015314016', 'Student=马千里');
+INSERT INTO `system_user` VALUES ('56', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015314022', 'Student=靳航');
+INSERT INTO `system_user` VALUES ('57', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015314023', 'Student=柳扬');
+INSERT INTO `system_user` VALUES ('58', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015314017', 'Student=宋尚飞');
+INSERT INTO `system_user` VALUES ('59', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015214549', 'Student=金浩');
+INSERT INTO `system_user` VALUES ('60', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015214571', 'Student=马晓旭');
+INSERT INTO `system_user` VALUES ('61', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015214557', 'Student=朱梦琪');
+INSERT INTO `system_user` VALUES ('62', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016314026', 'Student=康琦');
+INSERT INTO `system_user` VALUES ('63', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016314018', 'Student=洪炳沅');
+INSERT INTO `system_user` VALUES ('64', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016314025', 'Student=黄辉荣');
+INSERT INTO `system_user` VALUES ('65', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016314019', 'Student=王丹');
+INSERT INTO `system_user` VALUES ('66', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016314017', 'Student=李昂');
+INSERT INTO `system_user` VALUES ('67', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214568', 'Student=陈新果');
+INSERT INTO `system_user` VALUES ('68', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214090', 'Student=陈怡鸣');
+INSERT INTO `system_user` VALUES ('69', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214554', 'Student=陈影');
+INSERT INTO `system_user` VALUES ('70', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214555', 'Student=崔可心');
+INSERT INTO `system_user` VALUES ('71', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214536', 'Student=丁凯');
+INSERT INTO `system_user` VALUES ('72', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214091', 'Student=甘东英');
+INSERT INTO `system_user` VALUES ('73', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214537', 'Student=高航');
+INSERT INTO `system_user` VALUES ('74', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214541', 'Student=韩庆龙');
+INSERT INTO `system_user` VALUES ('75', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214538', 'Student=黄璞');
+INSERT INTO `system_user` VALUES ('76', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214539', 'Student=李梦瑶');
+INSERT INTO `system_user` VALUES ('77', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214086', 'Student=李莎');
+INSERT INTO `system_user` VALUES ('78', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214556', 'Student=李愚');
+INSERT INTO `system_user` VALUES ('79', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214544', 'Student=王传硕');
+INSERT INTO `system_user` VALUES ('80', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214543', 'Student=任亮');
+INSERT INTO `system_user` VALUES ('81', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214060', 'Student=沈伟伟');
+INSERT INTO `system_user` VALUES ('82', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214092', 'Student=沈允');
+INSERT INTO `system_user` VALUES ('83', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214076', 'Student=苏越');
+INSERT INTO `system_user` VALUES ('84', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214557', 'Student=万洋洋');
+INSERT INTO `system_user` VALUES ('85', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214558', 'Student=王茀玺');
+INSERT INTO `system_user` VALUES ('86', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214057', 'Student=王君傲');
+INSERT INTO `system_user` VALUES ('87', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214093', 'Student=吴停');
+INSERT INTO `system_user` VALUES ('88', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214096', 'Student=夏子杰');
+INSERT INTO `system_user` VALUES ('89', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015214064', 'Student=许洁');
+INSERT INTO `system_user` VALUES ('90', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214063', 'Student=张若晨');
+INSERT INTO `system_user` VALUES ('91', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214065', 'Student=赵云鹏');
+INSERT INTO `system_user` VALUES ('92', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214560', 'Student=周艳红');
+INSERT INTO `system_user` VALUES ('93', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017314026', 'Student=樊迪');
+INSERT INTO `system_user` VALUES ('94', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017314015', 'Student=齐雪宇');
+INSERT INTO `system_user` VALUES ('95', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017314023', 'Student=于志鹏');
+INSERT INTO `system_user` VALUES ('96', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017314013', 'Student=陈玉川');
+INSERT INTO `system_user` VALUES ('97', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017314014', 'Student=李熠辰');
+INSERT INTO `system_user` VALUES ('98', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017314024', 'Student=张盛楠');
+INSERT INTO `system_user` VALUES ('99', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214552', 'Student=邓坤');
+INSERT INTO `system_user` VALUES ('100', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214564', 'Student=高晶晶');
+INSERT INTO `system_user` VALUES ('101', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214553', 'Student=高振宇');
+INSERT INTO `system_user` VALUES ('102', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214565', 'Student=何卓');
+INSERT INTO `system_user` VALUES ('103', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214554', 'Student=胡杰');
+INSERT INTO `system_user` VALUES ('104', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214558', 'Student=兰文萍');
+INSERT INTO `system_user` VALUES ('105', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214584', 'Student=李根');
+INSERT INTO `system_user` VALUES ('106', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214050', 'Student=李金潮');
+INSERT INTO `system_user` VALUES ('107', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214052', 'Student=李立');
+INSERT INTO `system_user` VALUES ('108', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214555', 'Student=林聿明');
+INSERT INTO `system_user` VALUES ('109', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214053', 'Student=吕鹏飞');
+INSERT INTO `system_user` VALUES ('110', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214054', 'Student=孙小喆');
+INSERT INTO `system_user` VALUES ('111', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214081', 'Student=王振威');
+INSERT INTO `system_user` VALUES ('112', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214078', 'Student=肖亚琪');
+INSERT INTO `system_user` VALUES ('113', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214070', 'Student=谢平');
+INSERT INTO `system_user` VALUES ('114', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214082', 'Student=薛一菡');
+INSERT INTO `system_user` VALUES ('115', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214570', 'Student=杨克');
+INSERT INTO `system_user` VALUES ('116', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214566', 'Student=禹亚峰');
+INSERT INTO `system_user` VALUES ('117', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214556', 'Student=张昊');
+INSERT INTO `system_user` VALUES ('118', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214055', 'Student=张杰');
+INSERT INTO `system_user` VALUES ('119', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214557', 'Student=张蒙丽');
+INSERT INTO `system_user` VALUES ('120', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214056', 'Student=张佩颖');
+INSERT INTO `system_user` VALUES ('121', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214069', 'Student=狄国佳');
+INSERT INTO `system_user` VALUES ('122', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018314016', 'Student=段旭');
+INSERT INTO `system_user` VALUES ('123', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018314015', 'Student=陈思杭');
+INSERT INTO `system_user` VALUES ('124', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018314026', 'Student=彭泽恒');
+INSERT INTO `system_user` VALUES ('125', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018314025', 'Student=李楷');
+INSERT INTO `system_user` VALUES ('126', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214052', 'Student=丁陈陈');
+INSERT INTO `system_user` VALUES ('127', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214053', 'Student=纪晨秋');
+INSERT INTO `system_user` VALUES ('128', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214054', 'Student=廖清云');
+INSERT INTO `system_user` VALUES ('129', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214055', 'Student=刘鹏');
+INSERT INTO `system_user` VALUES ('130', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214056', 'Student=刘轩章');
+INSERT INTO `system_user` VALUES ('131', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214051', 'Student=李国豪');
+INSERT INTO `system_user` VALUES ('132', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214075', 'Student=林德才');
+INSERT INTO `system_user` VALUES ('133', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214078', 'Student=葛运通');
+INSERT INTO `system_user` VALUES ('134', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214079', 'Student=杨晓鹏');
+INSERT INTO `system_user` VALUES ('135', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214544', 'Student=冯兴');
+INSERT INTO `system_user` VALUES ('136', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214545', 'Student=王昕楚');
+INSERT INTO `system_user` VALUES ('137', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214546', 'Student=王靖怡');
+INSERT INTO `system_user` VALUES ('138', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214553', 'Student=崔雪萌');
+INSERT INTO `system_user` VALUES ('139', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214554', 'Student=都兆楠');
+INSERT INTO `system_user` VALUES ('140', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214555', 'Student=谭遥');
+INSERT INTO `system_user` VALUES ('141', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214084', 'Student=周建伟');
+INSERT INTO `system_user` VALUES ('142', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214068', 'Student=刘胜男');
+INSERT INTO `system_user` VALUES ('143', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214080', 'Student=喻伟婕');
+INSERT INTO `system_user` VALUES ('144', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214081', 'Student=张璐瑶');
+INSERT INTO `system_user` VALUES ('145', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015214576', 'Student=卜铎');
+INSERT INTO `system_user` VALUES ('146', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2017214588', 'Student=孙成威');
+INSERT INTO `system_user` VALUES ('147', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214547', 'Student=李雨');
+INSERT INTO `system_user` VALUES ('148', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214548', 'Student=王昕');
+INSERT INTO `system_user` VALUES ('149', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214549', 'Student=朱振宇');
+INSERT INTO `system_user` VALUES ('150', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214550', 'Student=单锦旭');
+INSERT INTO `system_user` VALUES ('151', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214556', 'Student=董小钰');
+INSERT INTO `system_user` VALUES ('152', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214557', 'Student=陶冰星');
+INSERT INTO `system_user` VALUES ('153', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214558', 'Student=王扬超');
+INSERT INTO `system_user` VALUES ('154', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214559', 'Student=杨哲任');
+INSERT INTO `system_user` VALUES ('155', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214560', 'Student=张静宇');
+INSERT INTO `system_user` VALUES ('156', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214564', 'Student=谭宝亮');
+INSERT INTO `system_user` VALUES ('157', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214565', 'Student=赵恭宇');
+INSERT INTO `system_user` VALUES ('158', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214566', 'Student=葛旭');
+INSERT INTO `system_user` VALUES ('159', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214567', 'Student=李栋');
+INSERT INTO `system_user` VALUES ('160', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214568', 'Student=王帅');
+INSERT INTO `system_user` VALUES ('161', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214569', 'Student=武壮');
+INSERT INTO `system_user` VALUES ('162', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214570', 'Student=朱云鹏');
+INSERT INTO `system_user` VALUES ('163', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214573', 'Student=钟思源');
+INSERT INTO `system_user` VALUES ('164', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214574', 'Student=周冰');
+INSERT INTO `system_user` VALUES ('165', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214575', 'Student=曾亚男');
+INSERT INTO `system_user` VALUES ('166', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214576', 'Student=刘壮');
+INSERT INTO `system_user` VALUES ('167', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214577', 'Student=倪平');
+INSERT INTO `system_user` VALUES ('168', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214578', 'Student=张湘玮');
+INSERT INTO `system_user` VALUES ('169', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018214579', 'Student=赵留康');
+INSERT INTO `system_user` VALUES ('170', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2018244505', 'Student=王玮健');

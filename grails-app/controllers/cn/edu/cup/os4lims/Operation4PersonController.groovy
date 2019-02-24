@@ -176,6 +176,15 @@ class Operation4PersonController extends PersonController {
     def list() {
         //println("${params}")
         def result = commonQueryService.listFunction(params)
+        switch (params.key) {
+            case "年级":
+                println("${result.objectList}")
+                def gs = []
+                gs.addAll(result.objectList)
+                println("${gs}")
+                result.objectList = gs
+                break
+        }
         def view = result.view
         flash.message = result.message
         if (request.xhr) {
@@ -186,16 +195,10 @@ class Operation4PersonController extends PersonController {
     }
 
     def count() {
-        println("统计${params}")
+        //println("统计${params}")
         def count = 0
-        switch (params.key) {
-            case "年级":
-                count = commonQueryService.countFunction(params)
-                break
-            default:
-                count = commonQueryService.countFunction(params)
-        }
-        println("统计结果：${count}")
+        count = commonQueryService.countFunction(params)
+        //println("统计结果：${count}")
         def result = [count: count]
         if (request.xhr) {
             render result as JSON

@@ -19,10 +19,12 @@ class CommonQueryService {
         def queryStatement = QueryStatement.findByKeyString(keyString)
         if (queryStatement) {
             if (queryStatement.hql || queryStatement.viewName) {
+                //视图
+                result.view = queryStatement.viewName
+                //参数处理
                 if (queryStatement.paramsList) {
                     pl.addAll(queryStatement.paramsList.split(","))
                 }
-                result.view = queryStatement.viewName
                 def ps = [:]
                 ps.offset = params.offset
                 ps.max = params.max
@@ -32,13 +34,23 @@ class CommonQueryService {
                 //println("list 参数：${ps}")
                 if (queryStatement.isSQL) {
                     def db = new groovy.sql.Sql(dataSource)
-                    println("执行SQL ${queryStatement.hql} 参数：${ps}")
-                    if (ps.size() > 0) {
-                        objectList = db.rows(ps, queryStatement.hql)
-                    } else {
-                        objectList = db.rows(queryStatement.hql)
+                    //println("执行SQL ${queryStatement.hql} 参数：${ps}")
+                    // 处理分页
+                    def sql = queryStatement.hql
+                    if (sql.contains('limit')) {
+                        //println("开始处理分页参数:")
+                        sql = String.format(queryStatement.hql, Integer.parseInt(ps.offset), Integer.parseInt(ps.max))
+                        ps.remove("offset")
+                        ps.remove("max")
+                        //println("植入分页控制：${sql}")
                     }
-                    println("列表SQL: ${objectList}")
+                    // 剔除分页控制后
+                    if (ps.size() > 0) {
+                        objectList = db.rows(ps, sql)
+                    } else {
+                        objectList = db.rows(sql)
+                    }
+                    //println("列表SQL: ${objectList}")
                 } else {
                     objectList = QueryStatement.executeQuery(queryStatement.hql, ps)
                 }

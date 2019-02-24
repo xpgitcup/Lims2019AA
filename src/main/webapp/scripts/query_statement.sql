@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-17 10:25:58
+Date: 2019-02-24 17:08:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `query_statement` (
   `view_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_iejb2adhrl11w1nanxv8r9hql` (`key_string`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of query_statement
@@ -72,3 +72,5 @@ INSERT INTO `query_statement` VALUES ('109', '2', 'currentTeam', 'from Progress 
 INSERT INTO `query_statement` VALUES ('110', '2', 'currentTeam', 'select count(*) from Progress progress where progress.team=:currentTeam', '0', '\0', 'count.operation4Progress.currentTeam.进度查看', 'listProgress');
 INSERT INTO `query_statement` VALUES ('119', '1', 'currentProgress', 'from Evaluate evaluate where evaluate.progress=:currentProgress', '0', '\0', 'list.operation4Progress.currentProgress.反馈信息', 'listEvaluate');
 INSERT INTO `query_statement` VALUES ('120', '1', 'currentProgress', 'select count(*) from Evaluate evaluate where evaluate.progress=:currentProgress', '0', '\0', 'count.operation4Progress.currentProgress.反馈信息', null);
+INSERT INTO `query_statement` VALUES ('121', '4', null, 'SELECT Count(DISTINCT person.grade_name) FROM person WHERE person.grade_name IS NOT NULL', '0', '', 'count.operation4Person.年级', null);
+INSERT INTO `query_statement` VALUES ('122', '5', null, 'SELECT DISTINCT person.grade_name FROM person WHERE person.grade_name IS NOT NULL  LIMIT 0, 10', '0', '', 'list.operation4Person.年级', 'listGradeName');
