@@ -29,11 +29,15 @@ class CommonQueryService {
                 pl.each { e ->
                     ps.put(e, params.get(e))
                 }
-                println("list 参数：${ps}")
+                //println("list 参数：${ps}")
                 if (queryStatement.isSQL) {
                     def db = new groovy.sql.Sql(dataSource)
-                    println("执行SQL ${queryStatement.hql}")
-                    objectList = db.rows(ps, queryStatement.hql)
+                    println("执行SQL ${queryStatement.hql} 参数：${ps}")
+                    if (ps.size() > 0) {
+                        objectList = db.rows(ps, queryStatement.hql)
+                    } else {
+                        objectList = db.rows(queryStatement.hql)
+                    }
                     println("列表SQL: ${objectList}")
                 } else {
                     objectList = QueryStatement.executeQuery(queryStatement.hql, ps)
@@ -70,9 +74,15 @@ class CommonQueryService {
                 // 区分HQL以及SQL
                 if (queryStatement.isSQL) {
                     def db = new groovy.sql.Sql(dataSource)
-                    //println("执行SQL ${queryStatement.hql}")
-                    def c = db.rows(ps, queryStatement.hql)
-                    count = [c[0].getProperty('count(*)')]
+                    //println("统计SQL ${queryStatement.hql} 参数${ps}")
+                    def c
+                    if (ps.size() > 0) {
+                        c = db.rows(ps, queryStatement.hql)
+                    } else {
+                        c = db.rows(queryStatement.hql)
+                    }
+                    //println("统计SQL的结果 ${c}")
+                    count = [c[0].values()[0]]
                     //println("SQL 执行结果：${count}")
                 } else {
                     count = QueryStatement.executeQuery(queryStatement.hql, ps)

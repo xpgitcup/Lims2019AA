@@ -19,7 +19,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>
                     ${item.thingType}
-                    <a href="operation4ThingTypeAndPersonTitle/delete/${item.id}">删除</a>
+                    <a href="javascript: deleteItem(${item.id})">删除</a>
                 </td>
                 <td>${item.thingType.relatedThingTypeList()}</td>
                 <td>${item.personTitle}</td>

@@ -1,5 +1,5 @@
 var operation4PersonDiv;
-var jsTitlePerson = ["教师", "学生", "专业"];
+var jsTitlePerson = ["教师", "学生", "专业", "年级"];
 var title4Person = jsTitlePerson;
 var tabsTitle = "人员维护";
 var localPageSizePerson = 10;

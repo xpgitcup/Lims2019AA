@@ -14,9 +14,9 @@ class OperationSystemInterceptor {
     }
 
     boolean before() {
-        println("${controllerName}，动作：${actionName}.之前...")
+        //println("${controllerName}，动作：${actionName}.之前...")
         if (!session.systemUser) {
-            println("跳转...")
+            //println("跳转...")
             redirect(controller: "home", action: "loginUI")
         } else {
             systemCommonService.updateSystemUserList(request)
@@ -26,10 +26,10 @@ class OperationSystemInterceptor {
     }
 
     boolean after() {
-        println("控制器：${controllerName}，动作：${actionName}.之后...")
+        //println("控制器：${controllerName}，动作：${actionName}.之后...")
         if (session.systemUser) {
             if (params.size() > 0) {
-                println("记录日志...")
+                //println("记录日志...")
                 systemCommonService.recordLog(session, request, params)
             }
         }

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : sample
-Source Server Version : 50722
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : lims2018bdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50722
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-01-12 17:42:27
+Date: 2019-02-24 15:53:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `person` (
   CONSTRAINT `FK3e0iqc4bmiwmp8ltecavkc7d8` FOREIGN KEY (`supervisor_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKfj7yapqul1e9v1e0e79x6yqmi` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`),
   CONSTRAINT `FKgp5bmxhm3l9bb8l2oymygnfed` FOREIGN KEY (`person_title_id`) REFERENCES `person_title` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of person
@@ -255,3 +255,51 @@ INSERT INTO `person` VALUES ('211', '0', '15', '2015030066', '康迪', 'cn.edu.c
 INSERT INTO `person` VALUES ('212', '0', '15', '2015030067', '梅尔兰', 'cn.edu.cup.lims.Student', '储运15-4留学生班', '1', null);
 INSERT INTO `person` VALUES ('213', '0', '15', '2015030068', '萨纳特', 'cn.edu.cup.lims.Student', '储运15-4留学生班', '1', null);
 INSERT INTO `person` VALUES ('214', '0', '15', '2015030069', '桑迪', 'cn.edu.cup.lims.Student', '储运15-4留学生班', '1', null);
+INSERT INTO `person` VALUES ('215', '0', '5', '2161', '邢晓凯', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('216', '0', '4', '2166', '侯磊', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('217', '0', '5', '2005', '李兆慈', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('218', '0', '4', '1670', '黄启玉', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('219', '0', '5', '1815', '李鸿英', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('220', '0', '6', '2219', '阎凤元', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('221', '0', '5', '2157', '孙恒', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('222', '0', '5', '1357', '张帆', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('223', '0', '4', '0098', '张劲军', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('224', '0', '10', '1102', '吴海浩', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('225', '0', '4', '0093', '吴长春', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('226', '0', '5', '2401', '陈严飞', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('227', '0', '6', '2435', '韩善鹏', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('228', '0', '5', '2011880034', '王艺', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('229', '0', '5', '2013880070', '孙旭', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('230', '0', '5', '2014880069', '张永星', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('231', '0', '6', '2015880040', '刘稳文', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('232', '0', '6', '2016880002', '李文婧', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('233', '0', '6', '2016880044', '孙梦然', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('234', '0', '6', '2017880042', '王雨墨', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('235', '0', '6', '2018880019', '刘啸奔', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('236', '0', '6', '2018891017', '苏怀', 'cn.edu.cup.lims.Teacher', null, null, null);
+INSERT INTO `person` VALUES ('237', '0', '17', '2015214576', '卜铎', 'cn.edu.cup.lims.Student', '2015级', '2', '223');
+INSERT INTO `person` VALUES ('238', '0', '17', '2017214588', '孙成威', 'cn.edu.cup.lims.Student', '2017级', '2', '4');
+INSERT INTO `person` VALUES ('239', '0', '17', '2018214547', '李雨', 'cn.edu.cup.lims.Student', '2018级', '2', '216');
+INSERT INTO `person` VALUES ('240', '0', '17', '2018214548', '王昕', 'cn.edu.cup.lims.Student', '2018级', '2', '216');
+INSERT INTO `person` VALUES ('241', '0', '17', '2018214549', '朱振宇', 'cn.edu.cup.lims.Student', '2018级', '2', '216');
+INSERT INTO `person` VALUES ('242', '0', '17', '2018214550', '单锦旭', 'cn.edu.cup.lims.Student', '2018级', '2', '218');
+INSERT INTO `person` VALUES ('243', '0', '17', '2018214556', '董小钰', 'cn.edu.cup.lims.Student', '2018级', '2', '217');
+INSERT INTO `person` VALUES ('244', '0', '17', '2018214557', '陶冰星', 'cn.edu.cup.lims.Student', '2018级', '2', '217');
+INSERT INTO `person` VALUES ('245', '0', '17', '2018214558', '王扬超', 'cn.edu.cup.lims.Student', '2018级', '2', '217');
+INSERT INTO `person` VALUES ('246', '0', '17', '2018214559', '杨哲任', 'cn.edu.cup.lims.Student', '2018级', '2', '217');
+INSERT INTO `person` VALUES ('247', '0', '17', '2018214560', '张静宇', 'cn.edu.cup.lims.Student', '2018级', '2', '217');
+INSERT INTO `person` VALUES ('248', '0', '17', '2018214564', '谭宝亮', 'cn.edu.cup.lims.Student', '2018级', '2', '225');
+INSERT INTO `person` VALUES ('249', '0', '17', '2018214565', '赵恭宇', 'cn.edu.cup.lims.Student', '2018级', '2', '225');
+INSERT INTO `person` VALUES ('250', '0', '17', '2018214566', '葛旭', 'cn.edu.cup.lims.Student', '2018级', '2', '215');
+INSERT INTO `person` VALUES ('251', '0', '17', '2018214567', '李栋', 'cn.edu.cup.lims.Student', '2018级', '2', '215');
+INSERT INTO `person` VALUES ('252', '0', '17', '2018214568', '王帅', 'cn.edu.cup.lims.Student', '2018级', '2', '215');
+INSERT INTO `person` VALUES ('253', '0', '17', '2018214569', '武壮', 'cn.edu.cup.lims.Student', '2018级', '2', '215');
+INSERT INTO `person` VALUES ('254', '0', '17', '2018214570', '朱云鹏', 'cn.edu.cup.lims.Student', '2018级', '2', '215');
+INSERT INTO `person` VALUES ('255', '0', '17', '2018214573', '钟思源', 'cn.edu.cup.lims.Student', '2018级', '2', '223');
+INSERT INTO `person` VALUES ('256', '0', '17', '2018214574', '周冰', 'cn.edu.cup.lims.Student', '2018级', '2', '223');
+INSERT INTO `person` VALUES ('257', '0', '17', '2018214575', '曾亚男', 'cn.edu.cup.lims.Student', '2018级', '2', '4');
+INSERT INTO `person` VALUES ('258', '0', '17', '2018214576', '刘壮', 'cn.edu.cup.lims.Student', '2018级', '2', '4');
+INSERT INTO `person` VALUES ('259', '0', '17', '2018214577', '倪平', 'cn.edu.cup.lims.Student', '2018级', '2', '4');
+INSERT INTO `person` VALUES ('260', '0', '17', '2018214578', '张湘玮', 'cn.edu.cup.lims.Student', '2018级', '2', '4');
+INSERT INTO `person` VALUES ('261', '0', '17', '2018214579', '赵留康', 'cn.edu.cup.lims.Student', '2018级', '2', '4');
+INSERT INTO `person` VALUES ('262', '0', '17', '2018244505', '王玮健', 'cn.edu.cup.lims.Student', '2018级', '2', null);

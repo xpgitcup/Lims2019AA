@@ -3,11 +3,12 @@ package cn.edu.cup.os4lims
 import cn.edu.cup.lims.Person
 import cn.edu.cup.lims.PersonTitle
 import cn.edu.cup.lims.Team
+import cn.edu.cup.lims.TeamController
 import cn.edu.cup.lims.Thing
 import cn.edu.cup.lims.ThingTypeCircle
 import grails.converters.JSON
 
-class Operation4TeamController {
+class Operation4TeamController extends TeamController {
 
     def commonQueryService
 

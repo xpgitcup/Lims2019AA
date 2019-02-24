@@ -40,6 +40,13 @@ $(function () {
 
 });
 
+function deleteItem(id) {
+    console.info("删除：" + id);
+    ajaxExecuteWithMethod("operation4ThingTypeCircle/delete?id=" + id, 'DELETE');
+    console.info("删除：" + id + "了！");
+    location.reload();
+}
+
 /*
 * 定位到需要编辑的记录
 * */

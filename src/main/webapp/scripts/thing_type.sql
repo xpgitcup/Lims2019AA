@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : sample
-Source Server Version : 50722
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : lims2018bdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50722
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-01-11 16:33:37
+Date: 2019-02-24 15:53:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `thing_type` (
   UNIQUE KEY `UK_gdcrc8efclj9bf72ek4grj09u` (`name`),
   KEY `FKpnengadsd69u0k59x286mr04` (`up_type_id`),
   CONSTRAINT `FKpnengadsd69u0k59x286mr04` FOREIGN KEY (`up_type_id`) REFERENCES `thing_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of thing_type
@@ -43,3 +43,5 @@ INSERT INTO `thing_type` VALUES ('8', '0', '课堂教学', '3');
 INSERT INTO `thing_type` VALUES ('9', '0', '课程设计', '3');
 INSERT INTO `thing_type` VALUES ('10', '0', '软件实训', '9');
 INSERT INTO `thing_type` VALUES ('11', '0', '2018-2019-1', '10');
+INSERT INTO `thing_type` VALUES ('12', '0', '软件概论', '9');
+INSERT INTO `thing_type` VALUES ('14', '0', '油气管道SCADA系统与过程控制', '9');
