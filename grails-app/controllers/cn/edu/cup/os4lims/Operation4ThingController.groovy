@@ -1,9 +1,13 @@
 package cn.edu.cup.os4lims
 
 import cn.edu.cup.lims.Course
+import cn.edu.cup.lims.Person
 import cn.edu.cup.lims.Project
 import cn.edu.cup.lims.ThingController
 import grails.converters.JSON
+import grails.validation.ValidationException
+
+import static org.springframework.http.HttpStatus.CREATED
 
 class Operation4ThingController extends ThingController{
 
@@ -12,6 +16,57 @@ class Operation4ThingController extends ThingController{
     def courseService
     def projectService
     def commonQueryService
+
+    def save(Project project) {
+        if (project == null) {
+            notFound()
+            return
+        }
+
+        try {
+            projectService.save(project)
+        } catch (ValidationException e) {
+            respond project.errors, view: 'create'
+            return
+        }
+        redirect(action: "index")
+    }
+
+    def saveCourse(Course course) {
+        if (course == null) {
+            notFound()
+            return
+        }
+
+        try {
+            courseService.save(course)
+        } catch (ValidationException e) {
+            respond course.errors, view:'create'
+            return
+        }
+        redirect(action: "index")
+    }
+
+    def createProject() {
+        def project = new Project()
+        def view = "createProject"
+        if (request.xhr) {
+            render(template: view, model: [project: project])
+        } else {
+            respond project
+        }
+    }
+
+    def createCourse() {
+        def myself = Person.get(session.realId)
+        def course = new Course(teacher: myself)
+        def view = "createCourse"
+        if (request.xhr) {
+            render(template: view, model: [course: course])
+        } else {
+            respond course
+        }
+    }
 
     def importFromFile() {
         println("导入...${params}")

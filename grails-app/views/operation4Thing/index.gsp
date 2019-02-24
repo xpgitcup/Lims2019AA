@@ -57,6 +57,7 @@
             </g:uploadForm>
         </li>
         <li><a>||</a></li>
+        <li><a id="createItem" href=""></a></li>
     </ul>
 </div>
 

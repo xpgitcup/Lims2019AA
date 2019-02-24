@@ -27,6 +27,27 @@ function shiftDisplay(title) {
     $("#currentTemplate").attr("href", "operation4Thing/downloadTemplate?key=" + title);
     $("#currentImport").html("导入[" + title + "]数据");
     $("#importKey").attr("value", title);
+    $("#createItem").html("创建：" + title + " 数据");
+    switch (title) {
+        case "科研":
+            $("#createItem").attr("href", "javascript: createProject('" + title + "')");
+            break
+        case "教学":
+            $("#createItem").attr("href", "javascript: createCourse('" + title + "')");
+            break
+    }
+}
+
+function createProject(title) {
+    console.info("创建教学任务...");
+    //var title = getCurrentTabTitle(operation4ThingDiv);
+    ajaxRun("operation4Thing/createProject", 0, "list" + title + "Div");
+}
+
+function createCourse(title) {
+    console.info("创建教学任务...");
+    //var title = getCurrentTabTitle(operation4ThingDiv);
+    ajaxRun("operation4Thing/createCourse", 0, "list" + title + "Div");
 }
 
 /*
