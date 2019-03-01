@@ -43,4 +43,3 @@ CREATE TABLE `thing` (
 INSERT INTO `thing` VALUES ('1', '0', '单管水力模拟', '7', 'cn.edu.cup.lims.Project', '2018-10-01 00:00:00', '华北煤层气', '1', null, null);
 INSERT INTO `thing` VALUES ('2', '0', '管网水力学模拟', '7', 'cn.edu.cup.lims.Project', '2018-10-01 00:00:00', '华北煤层气', '1', null, null);
 INSERT INTO `thing` VALUES ('3', '0', '多气合采', '4', 'cn.edu.cup.lims.Project', '2016-01-01 00:00:00', '中联煤', '5', null, null);
-INSERT INTO `thing` VALUES ('4', '1', '软件实训-课程设计', '11', 'cn.edu.cup.lims.Course', null, null, null, '2', '2018-2019-1');

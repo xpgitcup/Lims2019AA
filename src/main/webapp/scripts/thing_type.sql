@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-24 15:53:22
+Date: 2019-03-01 16:27:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,6 +42,5 @@ INSERT INTO `thing_type` VALUES ('7', '0', '横向项目', '2');
 INSERT INTO `thing_type` VALUES ('8', '0', '课堂教学', '3');
 INSERT INTO `thing_type` VALUES ('9', '0', '课程设计', '3');
 INSERT INTO `thing_type` VALUES ('10', '0', '软件实训', '9');
-INSERT INTO `thing_type` VALUES ('11', '0', '2018-2019-1', '10');
 INSERT INTO `thing_type` VALUES ('12', '0', '软件概论', '9');
 INSERT INTO `thing_type` VALUES ('14', '0', '油气管道SCADA系统与过程控制', '9');

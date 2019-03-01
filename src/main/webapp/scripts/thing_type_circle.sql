@@ -35,8 +35,6 @@ CREATE TABLE `thing_type_circle` (
 -- ----------------------------
 INSERT INTO `thing_type_circle` VALUES ('1', '0', '2', '2');
 INSERT INTO `thing_type_circle` VALUES ('2', '0', '14', '2');
-INSERT INTO `thing_type_circle` VALUES ('3', '0', '15', '11');
-INSERT INTO `thing_type_circle` VALUES ('4', '0', '2', '11');
 INSERT INTO `thing_type_circle` VALUES ('9', '0', '2', '12');
 INSERT INTO `thing_type_circle` VALUES ('10', '0', '2', '14');
 INSERT INTO `thing_type_circle` VALUES ('11', '0', '17', '12');

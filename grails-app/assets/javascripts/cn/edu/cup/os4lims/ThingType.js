@@ -57,8 +57,8 @@ function changeUpNode(node) {
     $("#editItem").attr('href', 'javascript: editItem(' + node.attributes[0] + ')');
     $("#editItem").html("编辑" + node.attributes[0] + '节点');
     //  $("#deleteItem").attr('href', 'operation4ThingType/delete?id=' + node.attributes[0]);   // 不能POST
-    $("#deleteItem").attr('href', 'javascript: deleteItem(' + node.attributes[0] + ')');
-    $("#deleteItem").html("删除" + node.attributes[0] + '节点');
+    //$("#deleteItem").attr('href', 'javascript: deleteItem(' + node.attributes[0] + ')');
+    //$("#deleteItem").html("删除" + node.attributes[0] + '节点');
     $("#currentTitle").html(node.text);
     ajaxRun("operation4ThingType/show", node.attributes[0], "showThingTypeDiv");
 }
