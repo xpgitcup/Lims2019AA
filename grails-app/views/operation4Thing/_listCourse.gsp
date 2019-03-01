@@ -21,7 +21,7 @@
                         <a>删除</a>
                     </g:if>
                     <g:else>
-                        <a>不能删除</a>
+                        <a>不能删除，相关团队：${cn.edu.cup.lims.Team.countByThing(item)}，相关进度：${item.progresses?.size()}</a>
                     </g:else>
                 </td>
                 <td>${item.teacher}</td>
