@@ -36,8 +36,9 @@ function disband(id) {
 }
 
 function dismiss(id) {
-    var ids = reflashDisplayTitleA(operation4TeamUl, tabList4TeamManageA);
+    var ids = loadAllDisplayTitleId(jsTitleTeam);
     ajaxExecute("operation4Team/dismiss/?person=" + id + "&currentTeam=" + ids[1])
+    console.info("解聘：" + id);
     location.reload();
 }
 
@@ -50,7 +51,7 @@ function quitTeam(id) {
 function joinTeam(id) {
     ajaxExecute("operation4Team/joinTeam/" + id)
     selectCurrentItem(id)
-    operation4TeamDiv.tabs("select", "相关队员");
+    operation4TeamDiv.tabs("select", "队员列表");
 }
 
 function createTeam(id) {
