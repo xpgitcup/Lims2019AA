@@ -50,6 +50,13 @@ function createCourse(title) {
     ajaxRun("operation4Thing/createCourse", 0, "list" + title + "Div");
 }
 
+function deleteCourse(id) {
+    console.info("删除教学任务：" + id);
+    ajaxExecuteWithMethod("operation4Thing/delete?id=" + id, 'DELETE');
+    console.info("删除：" + id + "了！");
+    location.reload();
+}
+
 /*
 * 定位到需要编辑的记录
 * */

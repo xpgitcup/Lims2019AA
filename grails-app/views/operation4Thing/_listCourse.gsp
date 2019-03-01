@@ -18,7 +18,7 @@
                 <td>
                     ${item.name}
                     <g:if test="${(item.progresses?.size()<1) && (cn.edu.cup.lims.Team.countByThing(item)<1)}">
-                        <a>删除</a>
+                        <a href="javascript: deleteCourse(${item.id})">删除</a>
                     </g:if>
                     <g:else>
                         <a>不能删除，相关团队：${cn.edu.cup.lims.Team.countByThing(item)}，相关进度：${item.progresses?.size()}</a>
