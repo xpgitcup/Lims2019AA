@@ -39,7 +39,8 @@ class ThingType {
 
     boolean bePartOf(ThingType athingType) {
         boolean isThis = athingType.equals(this)
-        boolean isMember = subTypes.contains(athingType)
+        //boolean isMember = subTypes.contains(athingType)
+        boolean isMember = relatedThingTypeList().contains(athingType)
         return (isThis || isMember)
     }
 

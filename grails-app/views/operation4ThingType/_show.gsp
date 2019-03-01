@@ -23,6 +23,13 @@
             <g:else>
                 <a>不能删除！项目：${this.thingType.things?.size()}，任务分配：${cn.edu.cup.lims.ThingTypeCircle.countByThingType(this.thingType)}</a>
             </g:else>
+            <a>||</a>
+            <g:if test="${isProject}">
+                <a class="create">创建科研项目</a>
+            </g:if>
+            <g:if test="${isCourse}">
+                <a href="javascript: createCourse(${this.thingType.id})" class="create">创建教学任务</a>
+            </g:if>
         </fieldset>
     </g:form>
 </div>

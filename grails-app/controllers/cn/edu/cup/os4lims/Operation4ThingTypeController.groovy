@@ -1,22 +1,79 @@
 package cn.edu.cup.os4lims
 
+import cn.edu.cup.lims.Course
+import cn.edu.cup.lims.Person
 import cn.edu.cup.lims.ThingType
 import cn.edu.cup.lims.ThingTypeController
 import cn.edu.cup.system.JsFrame
 import grails.converters.JSON
 import grails.validation.ValidationException
 
+import static org.springframework.http.HttpStatus.CREATED
+
 class Operation4ThingTypeController extends ThingTypeController {
 
     def commonQueryService
     def treeViewService
+    def courseService
+
+    def createCourse() {
+        println("${params}")
+        def aThingType = thingTypeService.get(params.id)
+        def myself = Person.get(session.realId)
+        Calendar calendar = Calendar.getInstance();
+        def y = calendar.get(Calendar.YEAR);
+        def m = calendar.get(Calendar.MONTH);
+        //d=calendar.get(Calendar.DATE);
+        //h=calendar.get(Calendar.HOUR_OF_DAY);
+        //mi=calendar.get(Calendar.MINUTE);
+        //s=calendar.get(Calendar.SECOND);
+        def sy
+        if (m > 6) {
+            sy = "${y}-${y + 1}-1"
+        } else {
+            sy = "${y - 1}-${y}-2"
+        }
+        def course = new Course(
+                thingType: aThingType,
+                teacher: myself,
+                name: "${aThingType.name}.${sy}",
+                schoolYear: sy
+        )
+
+        def view = "createCourse"
+        if (request.xhr) {
+            render(template: view, model: [course: course])
+        } else {
+            respond course
+        }
+    }
+
+    def saveCourse(Course course) {
+        if (course == null) {
+            notFound()
+            return
+        }
+
+        try {
+            courseService.save(course)
+        } catch (ValidationException e) {
+            respond course.errors, view: 'create'
+            return
+        }
+        redirect(action: "index")
+    }
+
 
     def show(Long id) {
         def thingType = thingTypeService.get(id)
-        println("show ${thingType}")
+        //println("show ${thingType}")
+        //def projectList = ThingType.findByName("科研项目").relatedThingTypeList()
+        //def courseList = ThingType.findByName("教学任务").relatedThingTypeList()
+        def isProject = ThingType.findByName("科研项目").bePartOf(thingType)
+        def isCourse = ThingType.findByName("教学任务").bePartOf(thingType)
         def view = "show"
         if (request.xhr) {
-            render(template: view, model: [thingType: thingType])
+            render(template: view, model: [thingType: thingType, isProject: isProject, isCourse: isCourse])
         } else {
             respond thingType
         }

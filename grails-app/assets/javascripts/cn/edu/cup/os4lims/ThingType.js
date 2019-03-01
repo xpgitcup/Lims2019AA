@@ -47,6 +47,12 @@ function createItem(id) {
     ajaxRun("operation4ThingType/create", id, "showThingTypeDiv");
 }
 
+function createCourse(id) {
+    //var title = getCurrentTabTitle(operation4ThingTypeDiv);
+    //ajaxRun("operation4ThingType/create/?upTitle=" + id, 0, "list" + title + "Div");
+    ajaxRun("operation4ThingType/createCourse", id, "showThingTypeDiv");
+}
+
 /*
 * 节点被选择。。。
 * */
