@@ -14,7 +14,6 @@ class Team {
 
     static mapping = {
         sort('leader')
-        members sort: 'name'  //这是排序的标准做法
     }
 
     String toString() {
