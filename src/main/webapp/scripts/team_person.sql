@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 18:50:44
+Date: 2019-03-02 18:59:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,3 +42,6 @@ INSERT INTO `team_person` VALUES ('6', null);
 INSERT INTO `team_person` VALUES ('6', null);
 INSERT INTO `team_person` VALUES ('6', '49');
 INSERT INTO `team_person` VALUES ('6', '34');
+INSERT INTO `team_person` VALUES ('5', '57');
+INSERT INTO `team_person` VALUES ('5', '48');
+INSERT INTO `team_person` VALUES ('5', '59');
