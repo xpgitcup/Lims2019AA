@@ -20,10 +20,11 @@
         <thead>
         <th>队长</th>
         <th>任务</th>
+        <th>招募</th>
         <th>队员</th>
         <th>进度</th>
         </thead>
-        <g:if test="${objectList.size()<1}">
+        <g:if test="${objectList.size() < 1}">
             <div style="color: red">没有相关的团队！</div>
         </g:if>
         <tbody>
@@ -44,7 +45,18 @@
                 <td>
                     ${item.thing}
                 </td>
-                <td>${item.members}</td>
+                <td>
+                    <g:if test="${item.leader.id == session.realId}">
+                        <g:form controller="operation4Team" action="recruit">
+                            <label>姓名</label>
+                            <input name="name">
+                            <g:hiddenField name="team" value="${item.id}"/>
+                            <input type="submit" value="ok"/>
+                        </g:form>
+                    </g:if>
+                    <g:else>队长负责招人！</g:else>
+                </td>
+                <td>${item.members?.size()}</td>
                 <td>${item.progresses}</td>
             </tr>
         </g:each>

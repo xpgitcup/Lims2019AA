@@ -7,15 +7,38 @@ import cn.edu.cup.lims.ThingController
 import grails.converters.JSON
 import grails.validation.ValidationException
 
-import static org.springframework.http.HttpStatus.CREATED
-
-class Operation4ThingController extends ThingController{
+class Operation4ThingController extends ThingController {
 
     def excelByJxlService
     def commonService
     def courseService
     def projectService
     def commonQueryService
+
+    def editProject(Long id) {
+        def project = projectService.get(id)
+        def view = "editProject"
+        if (request.xhr) {
+            render(template: view, model: [project: project])
+        } else {
+            respond project
+        }
+    }
+
+    def saveProject(Project project) {
+        if (project == null) {
+            notFound()
+            return
+        }
+
+        try {
+            projectService.save(project)
+        } catch (ValidationException e) {
+            respond project.errors, view: 'create'
+            return
+        }
+        redirect(action: "index")
+    }
 
     def save(Project project) {
         if (project == null) {
@@ -41,7 +64,7 @@ class Operation4ThingController extends ThingController{
         try {
             courseService.save(course)
         } catch (ValidationException e) {
-            respond course.errors, view:'create'
+            respond course.errors, view: 'create'
             return
         }
         redirect(action: "index")
@@ -164,5 +187,5 @@ class Operation4ThingController extends ThingController{
         }
     }
 
-    def index() { }
+    def index() {}
 }

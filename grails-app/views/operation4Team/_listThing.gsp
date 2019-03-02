@@ -1,3 +1,4 @@
+<%@ page import="cn.edu.cup.lims.Team" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
         <thead>
         <th>任务名称</th>
         <th>任务类型</th>
+        <th>相关团队数</th>
         </thead>
         <tbody>
         <g:each in="${objectList}" var="item" status="i">
@@ -26,6 +28,7 @@
                     <a href="javascript: listTeam(${item.id})">查看团队</a>
                 </td>
                 <td>${item.thingType}</td>
+                <td>${cn.edu.cup.lims.Team.countByThing(item)}</td>
             </tr>
         </g:each>
         </tbody>

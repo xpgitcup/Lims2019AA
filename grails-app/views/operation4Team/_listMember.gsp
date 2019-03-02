@@ -20,6 +20,7 @@
         <thead>
         <th>队长</th>
         <th>任务</th>
+        <th>招募</th>
         </thead>
         <tbody>
         <g:each in="${objectList}" var="item" status="i">
@@ -30,9 +31,20 @@
                 <td>
                     ${item.thing}
                 </td>
+                <td>
+                    <g:if test="${item.leader.id == session.realId}">
+                        <g:form controller="operation4Team" action="recruit">
+                            <label>姓名</label>
+                            <input name="name">
+                            <g:hiddenField name="team" value="${item.id}"/>
+                            <input type="submit" value="ok"/>
+                        </g:form>
+                    </g:if>
+                    <g:else>队长负责招人！</g:else>
+                </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="3">
                     <table>
                         <thead>
                         <th>编号</th>

@@ -4,6 +4,7 @@ import cn.edu.cup.lims.Person
 import cn.edu.cup.lims.PersonTitle
 import cn.edu.cup.lims.Team
 import cn.edu.cup.lims.TeamController
+import cn.edu.cup.lims.TeamService
 import cn.edu.cup.lims.Thing
 import cn.edu.cup.lims.ThingTypeCircle
 import grails.converters.JSON
@@ -11,6 +12,18 @@ import grails.converters.JSON
 class Operation4TeamController extends TeamController {
 
     def commonQueryService
+
+    def recruit() {
+        def person = Person.findByName(params.name)
+        def team = teamService.get(params.team)
+        if (!team.members.contains(person)) {
+            team.members.add(person)
+            teamService.save(team)
+        } else {
+            flash.message = "已经加入了!"
+        }
+        chain(action: "index")
+    }
 
     def disband(Team team) {
         if (team) {

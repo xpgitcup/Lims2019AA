@@ -2,6 +2,7 @@ package cn.edu.cup.os4lims
 
 import cn.edu.cup.lims.Course
 import cn.edu.cup.lims.Person
+import cn.edu.cup.lims.Project
 import cn.edu.cup.lims.ThingType
 import cn.edu.cup.lims.ThingTypeController
 import cn.edu.cup.system.JsFrame
@@ -15,6 +16,37 @@ class Operation4ThingTypeController extends ThingTypeController {
     def commonQueryService
     def treeViewService
     def courseService
+    def projectService
+
+    def createProject() {
+        println("${params}")
+        def aThingType = thingTypeService.get(params.id)
+        def project = new Project(
+                thingType: aThingType
+        )
+
+        def view = "createProject"
+        if (request.xhr) {
+            render(template: view, model: [project: project])
+        } else {
+            respond project
+        }
+    }
+
+    def saveProject(Project project) {
+        if (project == null) {
+            notFound()
+            return
+        }
+
+        try {
+            projectService.save(project)
+        } catch (ValidationException e) {
+            respond project.errors, view:'create'
+            return
+        }
+        redirect(action: "index")
+    }
 
     def createCourse() {
         println("${params}")
@@ -87,7 +119,7 @@ class Operation4ThingTypeController extends ThingTypeController {
 
         thingTypeService.delete(id)
 
-        flash.message = message(code: 'default.deleted.message', args: [message(code: 'thingType.label', default: 'PersonTitle'), id])
+        flash.message = message(code: 'default.deleted.message', args: [message(code: 'thingType.label', default: 'ThingType'), id])
 
         redirect(action: "index")
     }

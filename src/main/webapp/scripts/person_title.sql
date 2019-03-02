@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : sample
-Source Server Version : 50722
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : lims2018bdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50722
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-01-11 16:28:45
+Date: 2019-03-02 14:47:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `person_title` (
   UNIQUE KEY `UK_1so069qcrsvi8y4rqfwh0kdhu` (`name`),
   KEY `FKi6shdjfd8s0hk2fcmo37y9ou9` (`up_title_id`),
   CONSTRAINT `FKi6shdjfd8s0hk2fcmo37y9ou9` FOREIGN KEY (`up_title_id`) REFERENCES `person_title` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of person_title
@@ -49,3 +49,4 @@ INSERT INTO `person_title` VALUES ('14', '0', '3', '研究生');
 INSERT INTO `person_title` VALUES ('15', '0', '13', '2015级');
 INSERT INTO `person_title` VALUES ('16', '0', '14', '博士');
 INSERT INTO `person_title` VALUES ('17', '0', '14', '硕士');
+INSERT INTO `person_title` VALUES ('18', '0', '14', '博士后');

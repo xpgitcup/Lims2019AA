@@ -32,6 +32,7 @@
                     <g:else>
                         <a>不能删除，相关团队：${cn.edu.cup.lims.Team.countByThing(item)}，相关进度：${item.progresses?.size()}</a>
                     </g:else>
+                    <a href="javascript: editProject(${item.id})">编辑</a>
                 </td>
                 <td>${item.thingType}</td>
                 <td>${item.companyA}</td>

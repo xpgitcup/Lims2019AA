@@ -38,6 +38,12 @@ function shiftDisplay(title) {
     }
 }
 
+function editProject(id) {
+    console.info("编辑项目信息...");
+    var title = getCurrentTabTitle(operation4ThingDiv);
+    ajaxRun("operation4Thing/editProject", id, "list" + title + "Div");
+}
+
 function createProject(title) {
     console.info("创建教学任务...");
     //var title = getCurrentTabTitle(operation4ThingDiv);

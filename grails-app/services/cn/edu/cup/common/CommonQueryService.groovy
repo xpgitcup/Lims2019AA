@@ -52,6 +52,7 @@ class CommonQueryService {
                     }
                     //println("列表SQL: ${objectList}")
                 } else {
+                    println("HQL: ${queryStatement.hql}, ${ps}")
                     objectList = QueryStatement.executeQuery(queryStatement.hql, ps)
                 }
                 result.objectList = objectList
