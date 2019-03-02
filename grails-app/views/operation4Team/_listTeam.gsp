@@ -24,7 +24,7 @@
         <th>进度</th>
         </thead>
         <g:if test="${objectList.size()<1}">
-            <div style="color: red">请选择相应的题目，然后才能浏览！</div>
+            <div style="color: red">没有相关的团队！</div>
         </g:if>
         <tbody>
         <g:each in="${objectList}" var="item" status="i">

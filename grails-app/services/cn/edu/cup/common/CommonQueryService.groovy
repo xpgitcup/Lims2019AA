@@ -34,7 +34,7 @@ class CommonQueryService {
                 //println("list 参数：${ps}")
                 if (queryStatement.isSQL) {
                     def db = new groovy.sql.Sql(dataSource)
-                    //println("执行SQL ${queryStatement.hql} 参数：${ps}")
+                    println("执行SQL ${queryStatement.hql} 参数：${ps}")
                     // 处理分页
                     def sql = queryStatement.hql
                     if (sql.contains('limit')) {
@@ -42,7 +42,7 @@ class CommonQueryService {
                         sql = String.format(queryStatement.hql, Integer.parseInt(ps.offset), Integer.parseInt(ps.max))
                         ps.remove("offset")
                         ps.remove("max")
-                        //println("植入分页控制：${sql}")
+                        println("植入分页控制：${sql}")
                     }
                     // 剔除分页控制后
                     if (ps.size() > 0) {

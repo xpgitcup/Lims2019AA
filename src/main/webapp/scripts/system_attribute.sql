@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : sample
-Source Server Version : 50722
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : lims2018bdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50722
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-01-21 14:53:16
+Date: 2019-03-02 11:07:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -41,8 +41,7 @@ INSERT INTO `system_attribute` VALUES ('7', '0', '底层管理', '1');
 INSERT INTO `system_attribute` VALUES ('8', '0', '教师权限', null);
 INSERT INTO `system_attribute` VALUES ('9', '0', '学生权限', null);
 INSERT INTO `system_attribute` VALUES ('10', '0', '基础维护', '8');
-INSERT INTO `system_attribute` VALUES ('11', '0', '教师服务', '8');
-INSERT INTO `system_attribute` VALUES ('12', '0', '学生服务', '9');
-INSERT INTO `system_attribute` VALUES ('13', '0', '系统维护', '9');
+INSERT INTO `system_attribute` VALUES ('11', '1', '用户服务', '8');
+INSERT INTO `system_attribute` VALUES ('12', '1', '用户服务', '9');
 INSERT INTO `system_attribute` VALUES ('14', '0', '系统维护', '8');
 INSERT INTO `system_attribute` VALUES ('15', '0', '底层管理', '8');

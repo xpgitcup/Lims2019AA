@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-24 17:08:45
+Date: 2019-03-02 09:46:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ INSERT INTO `query_statement` VALUES ('36', '0', null, 'from SystemMenu systemMe
 INSERT INTO `query_statement` VALUES ('37', '0', null, 'select count(*) from SystemLog systemLog', '0', '\0', 'count.operation4SystemLog.系统日志', null);
 INSERT INTO `query_statement` VALUES ('38', '0', null, 'from SystemLog systemLog', '0', '\0', 'list.operation4SystemLog.系统日志', 'listSystemLog');
 INSERT INTO `query_statement` VALUES ('39', '0', null, 'from Teacher teacher', '0', '\0', 'list.operation4Person.教师', 'listTeacher');
-INSERT INTO `query_statement` VALUES ('40', '0', null, 'from Student student order by major', '0', '\0', 'list.operation4Person.学生', 'listStudent');
+INSERT INTO `query_statement` VALUES ('40', '1', null, 'from Student student order by personTitle, major, code', '0', '\0', 'list.operation4Person.学生', 'listStudent');
 INSERT INTO `query_statement` VALUES ('41', '0', null, 'from Major major order by name', '0', '\0', 'list.operation4Person.专业', 'listMajor');
 INSERT INTO `query_statement` VALUES ('42', '0', null, 'select count(*) from Teacher teacher', '0', '\0', 'count.operation4Person.教师', null);
 INSERT INTO `query_statement` VALUES ('43', '0', null, 'select count(*) from Student student', '0', '\0', 'count.operation4Person.学生', null);
@@ -73,4 +73,4 @@ INSERT INTO `query_statement` VALUES ('110', '2', 'currentTeam', 'select count(*
 INSERT INTO `query_statement` VALUES ('119', '1', 'currentProgress', 'from Evaluate evaluate where evaluate.progress=:currentProgress', '0', '\0', 'list.operation4Progress.currentProgress.反馈信息', 'listEvaluate');
 INSERT INTO `query_statement` VALUES ('120', '1', 'currentProgress', 'select count(*) from Evaluate evaluate where evaluate.progress=:currentProgress', '0', '\0', 'count.operation4Progress.currentProgress.反馈信息', null);
 INSERT INTO `query_statement` VALUES ('121', '4', null, 'SELECT Count(DISTINCT person.grade_name) FROM person WHERE person.grade_name IS NOT NULL', '0', '', 'count.operation4Person.年级', null);
-INSERT INTO `query_statement` VALUES ('122', '5', null, 'SELECT DISTINCT person.grade_name FROM person WHERE person.grade_name IS NOT NULL  LIMIT 0, 10', '0', '', 'list.operation4Person.年级', 'listGradeName');
+INSERT INTO `query_statement` VALUES ('122', '6', null, 'SELECT DISTINCT person.grade_name FROM person WHERE person.grade_name IS NOT NULL limit %d,%d', '0', '', 'list.operation4Person.年级', 'listGradeName');

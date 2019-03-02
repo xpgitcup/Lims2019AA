@@ -111,7 +111,7 @@
     ]
   },
   {
-    "menuContext": "教师服务",
+    "menuContext": "用户服务",
     "menuAction": "#",
     "menuDescription": "便于教师检查进度",
     "roleAttribute": "系统维护",
@@ -121,14 +121,14 @@
         "menuContext": "团队管理",
         "menuAction": "operation4Team/index",
         "menuDescription": "新生加入到系统中，创建用户",
-        "upMenuItem": "教师服务",
+        "upMenuItem": "用户服务",
         "menuOrder": 0
       },
       {
         "menuContext": "任务管理",
         "menuAction": "operation4Progress/index",
         "menuDescription": "新生加入到系统中，创建用户",
-        "upMenuItem": "教师服务",
+        "upMenuItem": "用户服务",
         "menuOrder": 1
       }
     ]

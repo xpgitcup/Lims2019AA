@@ -174,7 +174,7 @@ class Operation4PersonController extends PersonController {
     }
 
     def list() {
-        //println("${params}")
+        println("${params}")
         def result = commonQueryService.listFunction(params)
         switch (params.key) {
             case "年级":
