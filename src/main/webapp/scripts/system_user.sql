@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 14:47:51
+Date: 2019-03-03 14:27:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `system_user` (
   UNIQUE KEY `UK_204b9ercidw1baj3s3m9lnr33` (`user_name`),
   KEY `FKaiybevf5q198uok4va3p7b6wb` (`role_attribute_id`),
   CONSTRAINT `FKaiybevf5q198uok4va3p7b6wb` FOREIGN KEY (`role_attribute_id`) REFERENCES `system_attribute` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=266 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of system_user
@@ -299,3 +299,4 @@ INSERT INTO `system_user` VALUES ('262', '0', '25d55ad283aa400af464c76d713c07ad'
 INSERT INTO `system_user` VALUES ('263', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015030067', 'Student=梅尔兰');
 INSERT INTO `system_user` VALUES ('264', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015030068', 'Student=萨纳特');
 INSERT INTO `system_user` VALUES ('265', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2015030069', 'Student=桑迪');
+INSERT INTO `system_user` VALUES ('266', '0', '25d55ad283aa400af464c76d713c07ad', '9', '2016214559', 'Student=韦宝成');

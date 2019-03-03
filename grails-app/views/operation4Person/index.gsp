@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <!--meta name="layout" content="main"/-->
+<!--meta name="layout" content="main"/-->
 <!-- 实现可定制的布局 -->
     <g:if test="${layout}">
         <meta name="layout" content="${layout}"/>
@@ -35,7 +35,6 @@
         <li>
             <a id="currentTemplate" href="">下载模板</a>
         </li>
-        <li><a>||</a></li>
         <li><a id="currentImport">导入数据</a></li>
         <li>
             <g:uploadForm method="post" action="importFromFile">
@@ -60,6 +59,67 @@
     </ul>
 </div>
 
+<div class="nav">
+    <ul>
+        <li><a id="imputManual"></a></li>
+        <li>
+            <div id="inputTeacher" class="hidden">
+                <g:form action="inputTeacher" method="post">
+                    <ul>
+                        <li>工号</li>
+                        <li><input type="text" name="code"></li>
+                        <li>姓名</li>
+                        <li><input type="text" name="name"></li>
+                        <li>职称</li>
+                        <li>
+                            <g:select name="personTitle"
+                                      from="${cn.edu.cup.lims.PersonTitle.findByName('教师').subTitles}"
+                                      optionKey="id"
+                                      noSelection="['': '-请选择-']"/>
+                        </li>
+                        <li>
+                            <input type="submit" value="ok">
+                        </li>
+                    </ul>
+                </g:form>
+            </div>
+        </li>
+        <li>
+            <div id="inputStudent" class="hidden">
+                <g:form action="inputStudent" method="post">
+                    <ul>
+                        <li>学号</li>
+                        <li><input type="text" name="code"></li>
+                        <li>姓名</li>
+                        <li><input type="text" name="name"></li>
+                        <li>类型</li>
+                        <li>
+                            <g:select name="personTitle"
+                                      from="${cn.edu.cup.lims.Student.executeQuery('select DISTINCT student.personTitle from Student student ')}"
+                                      noSelection="['': '-请选择-']"/>
+                        </li>
+                        <li>年级</li>
+                        <li>
+                            <g:select name="gradeName"
+                                      from="${cn.edu.cup.lims.Student.executeQuery('select DISTINCT student.gradeName from Student student ')}"
+                                      noSelection="['': '-请选择-']"/>
+                        </li>
+                        <li>专业</li>
+                        <li>
+                            <g:select name="major"
+                                      from="${cn.edu.cup.lims.Major.list()}"
+                                      optionKey="id"
+                                      noSelection="['': '-请选择-']"/>
+                        </li>
+                        <li>
+                            <input type="submit" value="ok">
+                        </li>
+                    </ul>
+                </g:form>
+            </div>
+        </li>
+    </ul>
+</div>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>

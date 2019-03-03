@@ -22,9 +22,14 @@ class PersonTitle {
         return name
     }
 
+    boolean bePartOfByName(String aTitleName) {
+        def aTitle = PersonTitle.findByName(aTitleName)
+        return bePartOf(aTitle)
+    }
+
     boolean bePartOf(PersonTitle aTitle) {
         boolean isThis = aTitle.equals(this)
-        boolean isMember = subTitles.contains(aTitle)
+        boolean isMember = aTitle.subTitles.contains(this)
         return (isThis || isMember)
     }
 

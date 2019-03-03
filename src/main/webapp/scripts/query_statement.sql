@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 09:46:42
+Date: 2019-03-03 18:45:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ INSERT INTO `query_statement` VALUES ('8', '0', null, 'from SystemMenu systemMen
 INSERT INTO `query_statement` VALUES ('9', '0', null, 'select count(*) from SystemLog systemLog', '0', '\0', 'count.operation4SystemLog.系统日志', null);
 INSERT INTO `query_statement` VALUES ('10', '0', null, 'from SystemLog systemLog', '0', '\0', 'list.operation4SystemLog.系统日志', 'listSystemLog');
 INSERT INTO `query_statement` VALUES ('11', '0', null, 'from Teacher teacher', '0', '\0', 'list.operation4Person.教师', 'listTeacher');
-INSERT INTO `query_statement` VALUES ('12', '1', null, 'from Student student order by personTitle, major, code', '0', '\0', 'list.operation4Person.学生', 'listStudent');
+INSERT INTO `query_statement` VALUES ('12', '2', null, 'from Student student order by personTitle, supervisor, gradeName,  major, code', '0', '\0', 'list.operation4Person.学生', 'listStudent');
 INSERT INTO `query_statement` VALUES ('13', '0', null, 'from Major major order by name', '0', '\0', 'list.operation4Person.专业', 'listMajor');
 INSERT INTO `query_statement` VALUES ('14', '0', null, 'select count(*) from Teacher teacher', '0', '\0', 'count.operation4Person.教师', null);
 INSERT INTO `query_statement` VALUES ('15', '0', null, 'select count(*) from Student student', '0', '\0', 'count.operation4Person.学生', null);
@@ -68,7 +68,7 @@ INSERT INTO `query_statement` VALUES ('31', '1', 'myself', 'from Team team where
 INSERT INTO `query_statement` VALUES ('32', '2', 'myself', 'select count(*) from Team team where team.leader=:myself', '0', '\0', 'count.operation4Progress.我领导的.myself', 'listTeam');
 INSERT INTO `query_statement` VALUES ('33', '3', 'myself', 'select team_members_id  from team_person where person_id=:myself', '0', '', 'list.operation4Progress.我参与的.myself', 'listTeam');
 INSERT INTO `query_statement` VALUES ('34', '3', 'myself', 'select count(*) from team_person where person_id=:myself', '0', '', 'count.operation4Progress.我参与的.myself', null);
-INSERT INTO `query_statement` VALUES ('35', '2', 'currentTeam', 'from Progress progress where progress.team=:currentTeam', '0', '\0', 'list.operation4Progress.currentTeam.进度查看', 'listProgress');
+INSERT INTO `query_statement` VALUES ('35', '4', 'currentTeam', 'from Progress progress where progress.team=:currentTeam order by progress.regDate desc', '0', '\0', 'list.operation4Progress.currentTeam.进度查看', 'listProgress');
 INSERT INTO `query_statement` VALUES ('36', '2', 'currentTeam', 'select count(*) from Progress progress where progress.team=:currentTeam', '0', '\0', 'count.operation4Progress.currentTeam.进度查看', 'listProgress');
 INSERT INTO `query_statement` VALUES ('37', '1', 'currentProgress', 'from Evaluate evaluate where evaluate.progress=:currentProgress', '0', '\0', 'list.operation4Progress.currentProgress.反馈信息', 'listEvaluate');
 INSERT INTO `query_statement` VALUES ('38', '1', 'currentProgress', 'select count(*) from Evaluate evaluate where evaluate.progress=:currentProgress', '0', '\0', 'count.operation4Progress.currentProgress.反馈信息', null);

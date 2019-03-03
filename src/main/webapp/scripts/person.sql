@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 14:47:42
+Date: 2019-03-03 14:27:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `person` (
   CONSTRAINT `FK3e0iqc4bmiwmp8ltecavkc7d8` FOREIGN KEY (`supervisor_id`) REFERENCES `person` (`id`),
   CONSTRAINT `FKfj7yapqul1e9v1e0e79x6yqmi` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`),
   CONSTRAINT `FKgp5bmxhm3l9bb8l2oymygnfed` FOREIGN KEY (`person_title_id`) REFERENCES `person_title` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=264 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of person
@@ -303,3 +303,4 @@ INSERT INTO `person` VALUES ('259', '0', '17', '2018214577', '倪平', 'cn.edu.c
 INSERT INTO `person` VALUES ('260', '0', '17', '2018214578', '张湘玮', 'cn.edu.cup.lims.Student', '硕士2018', '2', '4');
 INSERT INTO `person` VALUES ('261', '0', '17', '2018214579', '赵留康', 'cn.edu.cup.lims.Student', '硕士2018', '2', '4');
 INSERT INTO `person` VALUES ('262', '0', '17', '2018244505', '王玮健', 'cn.edu.cup.lims.Student', '硕士2018', '2', null);
+INSERT INTO `person` VALUES ('263', '0', '17', '2016214559', '韦宝成', 'cn.edu.cup.lims.Student', '硕士2016', '2', '2');

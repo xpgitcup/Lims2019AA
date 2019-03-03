@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 17:11:44
+Date: 2019-03-03 14:49:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,13 +35,12 @@ CREATE TABLE `thing` (
   KEY `FK5odgcdreoq3kaqqlaypyx7ku6` (`teacher_id`),
   CONSTRAINT `FK3jv5lg4546jticrnr46rl9i6f` FOREIGN KEY (`thing_type_id`) REFERENCES `thing_type` (`id`),
   CONSTRAINT `FK5odgcdreoq3kaqqlaypyx7ku6` FOREIGN KEY (`teacher_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of thing
 -- ----------------------------
 INSERT INTO `thing` VALUES ('1', '0', '本科毕设.2018-2019-2', '16', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
-INSERT INTO `thing` VALUES ('2', '0', '硕士论文.2018-2019-2', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
 INSERT INTO `thing` VALUES ('4', '0', '软件概论.2018-2019-2', '11', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
 INSERT INTO `thing` VALUES ('5', '0', '油气管道SCADA系统与过程控制.2018-2019-2', '12', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
 INSERT INTO `thing` VALUES ('6', '0', '成品油管道设计.2018-2019-2', '13', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
@@ -51,3 +50,10 @@ INSERT INTO `thing` VALUES ('9', '0', '冲蚀项目', '7', 'cn.edu.cup.lims.Proj
 INSERT INTO `thing` VALUES ('10', '0', '单管水力模拟', '7', 'cn.edu.cup.lims.Project', null, null, '2018-01-01 00:00:00', '华北煤层气', '1');
 INSERT INTO `thing` VALUES ('11', '0', '管网水力模拟', '7', 'cn.edu.cup.lims.Project', null, null, null, '华北煤层气', '1');
 INSERT INTO `thing` VALUES ('12', '0', '集输管网积液', '7', 'cn.edu.cup.lims.Project', null, null, null, '华北煤层气', '0');
+INSERT INTO `thing` VALUES ('13', '0', '微型SCADA系统', '18', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
+INSERT INTO `thing` VALUES ('14', '0', '2016.硕士论文.李愚', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
+INSERT INTO `thing` VALUES ('15', '0', '2016.硕士论文.周艳红', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
+INSERT INTO `thing` VALUES ('16', '0', '2016.硕士论文.韦宝成', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
+INSERT INTO `thing` VALUES ('17', '0', '2016.硕士论文.陈影', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
+INSERT INTO `thing` VALUES ('18', '0', '2016.硕士论文.万洋洋', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);
+INSERT INTO `thing` VALUES ('19', '0', '2016.硕士论文.金浩', '17', 'cn.edu.cup.lims.Course', '2', '2018-2019-2', null, null, null);

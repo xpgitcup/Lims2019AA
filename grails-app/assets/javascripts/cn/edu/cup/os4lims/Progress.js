@@ -32,6 +32,18 @@ $(function () {
 
 });
 
+function updateUploadFileName(fileName) {
+    var aainput = document.getElementById("uploadedFile");
+    $("#supportFileName").attr("value",aainput.files[0].name);
+    console.info("所选择的文件：" + fileName);
+    console.info(aainput.files[0].name)
+}
+
+function createNextProgress(id) {
+    console.info("创建新进度...")
+    ajaxRun("operation4Progress/createNextProgress", id, "editProgressDiv");
+}
+
 function createProgress(id) {
     console.info("创建新进度...")
     ajaxRun("operation4Progress/createProgress", id, "editProgressDiv");

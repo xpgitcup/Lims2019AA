@@ -38,6 +38,23 @@ function shiftDisplay(title) {
     $("#currentTemplate").attr("href", "operation4Person/downloadTemplate?key=" + title);
     $("#currentImport").html("导入[" + title + "]数据");
     $("#importKey").attr("value", title);
+    $("#imputManual").html("手输[" + title + "]");
+    switch (title) {
+        case "教师":
+            //$("#inputTeacher").style.display = "block";
+            //$("#inputTeacher").className = ""; //不起作用
+            $("#inputTeacher").attr("class", "")
+            $("#inputStudent").attr("class", "hidden")
+            console.info("----显示" + title);
+            break
+        case "学生":
+            $("#inputTeacher").attr("class", "hidden")
+            $("#inputStudent").attr("class", "")
+            break
+        default:
+            $("#inputTeacher").attr("class", "hidden")
+            $("#inputStudent").attr("class", "hidden")
+    }
 }
 
 /*

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 18:59:25
+Date: 2019-03-03 14:48:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,3 +45,23 @@ INSERT INTO `team_person` VALUES ('6', '34');
 INSERT INTO `team_person` VALUES ('5', '57');
 INSERT INTO `team_person` VALUES ('5', '48');
 INSERT INTO `team_person` VALUES ('5', '59');
+INSERT INTO `team_person` VALUES ('6', '263');
+INSERT INTO `team_person` VALUES ('7', '2');
+INSERT INTO `team_person` VALUES ('7', '15');
+INSERT INTO `team_person` VALUES ('7', '75');
+INSERT INTO `team_person` VALUES ('7', '69');
+INSERT INTO `team_person` VALUES ('7', '64');
+INSERT INTO `team_person` VALUES ('3', '1');
+INSERT INTO `team_person` VALUES ('4', '1');
+INSERT INTO `team_person` VALUES ('4', '48');
+INSERT INTO `team_person` VALUES ('4', '15');
+INSERT INTO `team_person` VALUES ('4', '61');
+INSERT INTO `team_person` VALUES ('8', '48');
+INSERT INTO `team_person` VALUES ('8', '61');
+INSERT INTO `team_person` VALUES ('9', '29');
+INSERT INTO `team_person` VALUES ('10', '43');
+INSERT INTO `team_person` VALUES ('11', '57');
+INSERT INTO `team_person` VALUES ('12', '263');
+INSERT INTO `team_person` VALUES ('13', '34');
+INSERT INTO `team_person` VALUES ('14', '49');
+INSERT INTO `team_person` VALUES ('15', '29');

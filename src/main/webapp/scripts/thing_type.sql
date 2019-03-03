@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-02 16:08:55
+Date: 2019-03-03 14:48:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `thing_type` (
   UNIQUE KEY `UK_gdcrc8efclj9bf72ek4grj09u` (`name`),
   KEY `FKpnengadsd69u0k59x286mr04` (`up_type_id`),
   CONSTRAINT `FKpnengadsd69u0k59x286mr04` FOREIGN KEY (`up_type_id`) REFERENCES `thing_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of thing_type
@@ -47,3 +47,4 @@ INSERT INTO `thing_type` VALUES ('12', '0', '油气管道SCADA系统与过程控
 INSERT INTO `thing_type` VALUES ('13', '0', '成品油管道设计', '9');
 INSERT INTO `thing_type` VALUES ('16', '0', '本科毕设', '3');
 INSERT INTO `thing_type` VALUES ('17', '0', '硕士论文', '3');
+INSERT INTO `thing_type` VALUES ('18', '0', '教改项目', '3');

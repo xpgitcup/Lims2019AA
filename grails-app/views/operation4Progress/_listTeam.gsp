@@ -33,8 +33,8 @@
                 <td>
                     ${item.thing}
                 </td>
-                <td>${item.members}</td>
-                <td>${item.progresses}</td>
+                <td>${item.members.size()}</td>
+                <td>${item.progresses.size()}</td>
             </tr>
         </g:each>
 

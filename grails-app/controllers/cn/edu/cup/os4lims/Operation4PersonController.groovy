@@ -3,6 +3,7 @@ package cn.edu.cup.os4lims
 import cn.edu.cup.lims.Major
 import cn.edu.cup.lims.Person
 import cn.edu.cup.lims.PersonController
+import cn.edu.cup.lims.PersonTitle
 import cn.edu.cup.lims.Student
 import cn.edu.cup.lims.Teacher
 import grails.converters.JSON
@@ -15,6 +16,29 @@ class Operation4PersonController extends PersonController {
     def teacherService
     def systemCommonService
     def commonQueryService
+
+    def inputStudent() {
+        def title = PersonTitle.findByName(params.personTitle)
+        params.personTitle = title.id
+        if (title.bePartOfByName("研究生")) {
+            def myself = personService.get(session.realId)
+            params.supervisor = myself
+        }
+        def student = new Student(params)
+        if (Student.countByCode(student.code)<1) {
+            studentService.save(student)
+            flash.message = "新增学生${student}。"
+        } else {
+            flash.message = "重复的学生${student}。"
+        }
+        redirect(action: "index")
+    }
+
+    def inputTeacher() {
+        def teacher = new Teacher(params)
+        teacherService.save(teacher)
+        redirect(action: "index")
+    }
 
     def removeFromSystemUserGrade() {
         def k = 0

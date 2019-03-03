@@ -1,5 +1,7 @@
 package cn.edu.cup.lims
 
+import java.sql.Timestamp
+
 class Progress {
 
     Progress prevProgress
@@ -21,7 +23,7 @@ class Progress {
     }
 
     String toString() {
-        return "${team}.${contributor}.${regDate}.progress"
+        return "${team}.${regDate}.${currentStatus}"
     }
 
 }
